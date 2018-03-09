@@ -127,6 +127,17 @@ INSTALLED_APPS = (
     'menus',
     'sekizai',
     'treebeard',
+    # you will probably need to add these
+    'aldryn_apphooks_config',
+    'aldryn_categories',
+    'aldryn_common',
+    'aldryn_newsblog',
+    'aldryn_people',
+    'aldryn_translation_tools',
+    'parler',
+    'sortedm2m',
+    'taggit',
+    'aldryn_boilerplates',    
     'djangocms_text_ckeditor',
     'filer',
     'easy_thumbnails',
@@ -140,6 +151,8 @@ INSTALLED_APPS = (
     'djangocms_video',
     'csblog'
 )
+
+ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
 
 LANGUAGES = (
     ## Customize this
@@ -195,5 +208,6 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.colorspace',
     'easy_thumbnails.processors.autocrop',
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
-    'easy_thumbnails.processors.filters'
+    'easy_thumbnails.processors.filters',
+    'easy_thumbnails.processors.background',
 )
