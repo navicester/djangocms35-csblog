@@ -45,7 +45,7 @@ ROOT_URLCONF = 'csblog.urls'
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'zh'
+
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -67,6 +67,12 @@ STATIC_ROOT = os.path.join(DATA_DIR, 'static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'csblog', 'static'),
 )
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
+
 SITE_ID = 1
 
 
@@ -86,10 +92,12 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'sekizai.context_processors.sekizai',
                 'django.template.context_processors.static',
-                'cms.context_processors.cms_settings'
+                'cms.context_processors.cms_settings',
+                'aldryn_boilerplates.context_processors.boilerplate',
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
+                'aldryn_boilerplates.template_loaders.AppDirectoriesLoader',
                 'django.template.loaders.app_directories.Loader',
                 'django.template.loaders.eggs.Loader'
             ],
@@ -140,8 +148,7 @@ INSTALLED_APPS = (
     'aldryn_boilerplates',    
     'djangocms_text_ckeditor',
     'filer',
-    'easy_thumbnails',
-    'djangocms_column',
+    'easy_thumbnails',    
     'djangocms_file',
     'djangocms_link',
     'djangocms_picture',
@@ -149,18 +156,38 @@ INSTALLED_APPS = (
     'djangocms_snippet',
     'djangocms_googlemap',
     'djangocms_video',
-    'csblog'
+    'djangocms_comments',
+    'csblog',
+    'aldryn_background_image',
+    'aldryn_bootstrap3',
+    # 'aldryn_style',
+    'djangocms_column',
+    'bootstrap3',
+    'django_forms_bootstrap', # for {% load bootstrap3 %}
+    'djangocms_inline_comment'
 )
 
-ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'aldryn_boilerplates.staticfile_finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+
+# ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
+
+LANGUAGE_CHINESE_SIMPLE = 'zh'
+LANGUAGE_CODE = LANGUAGE_CHINESE_SIMPLE
 
 LANGUAGES = (
     ## Customize this
-    ('zh', gettext('zh')),
+    # ('en', gettext('English')),
+    (LANGUAGE_CHINESE_SIMPLE, gettext('Simplified Chinese')),
+
 )
 
+
 CMS_LANGUAGES = {
-    ## Customize this
+    # Customize this
     'default': {
         'public': True,
         'hide_untranslated': False,
@@ -169,9 +196,10 @@ CMS_LANGUAGES = {
     1: [
         {
             'public': True,
-            'code': 'zh',
+            'code': LANGUAGE_CHINESE_SIMPLE,
             'hide_untranslated': False,
             'name': gettext('zh'),
+            # 'name': gettext('Simplified Chinese'),
             'redirect_on_fallback': True,
         },
     ],

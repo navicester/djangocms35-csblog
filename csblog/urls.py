@@ -13,6 +13,7 @@ from django.views.static import serve
 admin.autodiscover()
 
 urlpatterns = [
+	# url(r'^jsi18n/(?P<packages>\S+?)/$', 'django.views.i18n.javascript_catalog'),
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
 ]
@@ -20,6 +21,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(admin.site.urls)),  # NOQA
     url(r'^', include('cms.urls')),
+    url(r'^djangocms_comments/', include('djangocms_comments.urls')),
 )
 
 # This is only needed when using runserver.
