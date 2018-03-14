@@ -66,6 +66,8 @@ STATIC_ROOT = os.path.join(DATA_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'csblog', 'static'),
+    os.path.join(os.path.dirname(BASE_DIR), 'env', 'Lib', 'site-packages', 'djangocms_comments', \
+        'boilerplates','bootstrap3','static'),
 )
 
 LOCALE_PATHS = (
@@ -79,7 +81,8 @@ SITE_ID = 1
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'csblog', 'templates'),],
+        'DIRS': [os.path.join(BASE_DIR, 'csblog', 'templates'),
+                os.path.join(BASE_DIR, 'templates'),],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
