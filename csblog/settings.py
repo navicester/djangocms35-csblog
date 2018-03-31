@@ -118,6 +118,7 @@ MIDDLEWARE = (
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
@@ -137,18 +138,7 @@ INSTALLED_APPS = (
     'cms',
     'menus',
     'sekizai',
-    'treebeard',
-    # you will probably need to add these
-    'aldryn_apphooks_config',
-    'aldryn_categories',
-    'aldryn_common',
-    'aldryn_newsblog',
-    'aldryn_people',
-    'aldryn_translation_tools',
-    'parler',
-    'sortedm2m',
-    'taggit',
-    'aldryn_boilerplates',    
+    'treebeard', 
     'djangocms_text_ckeditor',
     'filer',
     'easy_thumbnails',    
@@ -159,24 +149,42 @@ INSTALLED_APPS = (
     'djangocms_snippet',
     'djangocms_googlemap',
     'djangocms_video',
-    'djangocms_comments',
+    'djangocms_column',	
     'csblog',
+
+    # you will probably need to add these
+    # 'aldryn_apphooks_config',
+    # 'aldryn_categories',
+    # 'aldryn_common',
+    # 'aldryn_newsblog',
+    # 'aldryn_people',
+    # 'aldryn_translation_tools',
+    # 'parler',
+    # 'sortedm2m',
+    # 'taggit',
+    # 'aldryn_boilerplates',   
+
     'aldryn_background_image',
     'aldryn_bootstrap3',
-    'aldryn_style', # name conflit with exist djangocms_style
-    'djangocms_column',
-    'bootstrap3',
-    'django_forms_bootstrap', # for {% load bootstrap3 %}
-    'djangocms_inline_comment'
+    'bootstrap3', # library django-bootstrap3, dependency of aldryn_bootstrap3
+
+    # 'aldryn_style',  # duplicate name with djangocms_style
+
+    # 'django_forms_bootstrap', # for {% load bootstrap3 %}
+
+    # 'djangocms_comments',		
+    # 'djangocms_inline_comment'  # not used finnally
 )
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'aldryn_boilerplates.staticfile_finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-)
 
-ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
+# STATICFILES_FINDERS = (
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'aldryn_boilerplates.staticfile_finders.AppDirectoriesFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+# )
+
+# ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
+
 
 LANGUAGE_CHINESE_SIMPLE = 'zh'
 LANGUAGE_CODE = LANGUAGE_CHINESE_SIMPLE
@@ -224,7 +232,7 @@ DATABASES = {
         'CONN_MAX_AGE': 0,
         'ENGINE': 'django.db.backends.sqlite3',
         'HOST': 'localhost',
-        'NAME': 'project.db',
+        'NAME': 'project1.db',
         'PASSWORD': '',
         'PORT': '',
         'USER': ''
