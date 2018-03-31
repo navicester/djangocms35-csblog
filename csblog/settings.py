@@ -163,7 +163,7 @@ INSTALLED_APPS = (
     'csblog',
     'aldryn_background_image',
     'aldryn_bootstrap3',
-    # 'aldryn_style',
+    'aldryn_style', # name conflit with exist djangocms_style
     'djangocms_column',
     'bootstrap3',
     'django_forms_bootstrap', # for {% load bootstrap3 %}
@@ -176,7 +176,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-# ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
+ALDRYN_BOILERPLATE_NAME = 'bootstrap3'
 
 LANGUAGE_CHINESE_SIMPLE = 'zh'
 LANGUAGE_CODE = LANGUAGE_CHINESE_SIMPLE
