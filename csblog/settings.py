@@ -66,8 +66,8 @@ STATIC_ROOT = os.path.join(DATA_DIR, 'static')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'csblog', 'static'),
-    os.path.join(os.path.dirname(BASE_DIR), 'env', 'Lib', 'site-packages', 'djangocms_comments', \
-        'boilerplates','bootstrap3','static'),
+    # os.path.join(os.path.dirname(BASE_DIR), 'env', 'Lib', 'site-packages', 'djangocms_comments', \
+    #     'boilerplates','bootstrap3','static'),
 )
 
 LOCALE_PATHS = (
@@ -82,7 +82,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'csblog', 'templates'),
-                os.path.join(BASE_DIR, 'templates'),],
+                os.path.join(BASE_DIR, 'templates'),
+                os.path.join(BASE_DIR, 'site-packages-update', 'djangocms_comments', 'templates'),
+                ],
         'OPTIONS': {
             'context_processors': [
                 'django.contrib.auth.context_processors.auth',
@@ -153,15 +155,15 @@ INSTALLED_APPS = (
     'csblog',
 
     # you will probably need to add these
-    # 'aldryn_apphooks_config',
-    # 'aldryn_categories',
-    # 'aldryn_common',
-    # 'aldryn_newsblog',
-    # 'aldryn_people',
-    # 'aldryn_translation_tools',
-    # 'parler',
-    # 'sortedm2m',
-    # 'taggit',
+    'aldryn_apphooks_config',
+    'aldryn_categories',
+    'aldryn_common',
+    'aldryn_newsblog',
+    'aldryn_people',
+    'aldryn_translation_tools',
+    'parler',
+    'sortedm2m',
+    'taggit',
     # 'aldryn_boilerplates',   
 
     'aldryn_background_image',
@@ -170,9 +172,9 @@ INSTALLED_APPS = (
 
     # 'aldryn_style',  # duplicate name with djangocms_style
 
-    # 'django_forms_bootstrap', # for {% load bootstrap3 %}
+    # 'django_forms_bootstrap', # for {% load bootstrap3 %}, why is it OK now ?
 
-    # 'djangocms_comments',		
+    'djangocms_comments',
     # 'djangocms_inline_comment'  # not used finnally
 )
 
@@ -218,9 +220,9 @@ CMS_LANGUAGES = {
 
 CMS_TEMPLATES = (
     ## Customize this
-    ('fullwidth.html', 'Fullwidth'),
     ('sidebar_left.html', 'Sidebar Left'),
-    ('sidebar_right.html', 'Sidebar Right')
+    ('sidebar_right.html', 'Sidebar Right'),
+    ('fullwidth.html', 'Fullwidth'),    
 )
 
 CMS_PERMISSION = True

@@ -1,7 +1,23 @@
 {% extends CMS_TEMPLATE %}
+{% load cms_tags %}
 
 {% block content %}
+
+<div class="row plugin-bar">
+  <div class="content col-lg-8 col-md-8 mx-auto">
     {% block newsblog_content %}
         {# article_list.html and article_detail.html extend this template #}
     {% endblock %}
+  </div>
+
+  <div class="sidebar col-lg-4  col-md-4">
+    {% placeholder "sidebar" %}
+    {% comment %} <!-- move below to plugin operation -->
+    <h2 class="text-center text-uppercase text-secondary mb-0">Tags</h2><hr>
+    {% placeholder "Tags" %}
+    <h2 class="text-center text-uppercase text-secondary mb-0">Category</h2><hr>
+    {% placeholder "category" %} 
+    {% endcomment %}   
+  </div>	
+</div>
 {% endblock content %}

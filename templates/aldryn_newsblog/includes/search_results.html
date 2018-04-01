@@ -1,7 +1,9 @@
 {% extends "aldryn_newsblog/base.html" %}
 {% load i18n apphooks_config_tags %}
+{% load cms_tags %}
 
 {% block newsblog_content %}
+    {% comment %}
     <ul>
         <h3>{% blocktrans with query=query %}Most recent articles containing "<strong>{{ query }}</strong>"{% endblocktrans %}</h3>
         {% for article in object_list %}
@@ -24,4 +26,29 @@
             {% endif %}
         {% endfor %}
     </ul>
+    {% endcomment %}
+
+    <h3 style="color: #17a2b8;">{% trans "Most recent articles containing" %} "{% blocktrans with query=query %} <strong>{{ query }}</strong>"{% endblocktrans %}</h3>
+    {% for article in object_list %}
+    <div class="post-preview">
+        <a href="{% namespace_url "article-detail" article.slug namespace=view.app_config.namespace default='' %}">
+            <h3 class="post-title">
+                <strong>
+                    {% for category in article.categories.all %}
+                        {{ category.name }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </strong>
+                {% render_model article "title" %}
+            </h3>
+            {% if article.lead_in %}
+            <h4 class="post-subtitle">
+                {{ article.lead_in|striptags|truncatewords:"10"|safe }}
+            </h4>
+            {% endif %}
+        </a>
+        <p class="post-meta">Posted by {% include "aldryn_newsblog/includes/author.html" with author=article.author %} on {{ article.publishing_date|date }}    </p>
+    </div>
+    {% endfor %}
+    <hr>
+
 {% endblock %}

@@ -63,6 +63,11 @@
     a:visited {text-decoration: none;}
     a:active {text-decoration: none;}
     a:hover {text-decoration: none;}
+
+    /*for sidebar*/
+    div.plugin-bar .text-secondary>div>ul{
+      padding-left: 0px;
+    }
         
     </style>
     {% endif %}    
@@ -123,14 +128,14 @@
 
     <!-- Main Content -->
     <div class="container">      
-      {% block container_content %}
+      {% block content %}
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          {% block content %}
+        <div class="col-lg-8 col-md-10">
+          
               {% placeholder content or %}
                 <p>This page has no content yet.</p>
               {% endplaceholder%}
-          {% endblock content %}
+          
         </div>
       </div>
       {% endblock %}

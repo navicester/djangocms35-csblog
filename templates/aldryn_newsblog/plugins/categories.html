@@ -1,13 +1,18 @@
 {% load i18n apphooks_config_tags %}
 
 <ul>
+    {% comment %}
     <li{% if not newsblog_category %} class="active"{% endif %}>
         <a href="{% namespace_url "article-list" namespace=instance.app_config.namespace default='' %}">{% trans "All" %}</a>
     </li>
+    {% endcomment %}
     {% for category in categories %}
+        {% comment %}
         <li{% if newsblog_category.id == category.id %} class="active"{% endif %}>
             <a href="{% namespace_url "article-list-by-category" category.slug namespace=instance.app_config.namespace default='' %}">{{ category.name }}</a>
             <span>{{ category.article_count }}</span>
         </li>
+        {% endcomment %}
+        <a href="{% namespace_url "article-list-by-category" category.slug namespace=instance.app_config.namespace default='' %}" style="background-color: grey;color:white;padding:4px; margin-right: 2px;border-radius: 3px;">{{ category.name }}</a>
     {% endfor %}
 </ul>
