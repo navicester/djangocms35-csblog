@@ -176,6 +176,12 @@ INSTALLED_APPS = (
 
     'djangocms_comments',
     # 'djangocms_inline_comment'  # not used finnally
+
+	'markdown_deux',
+    'djangocms_markdown', 
+	
+    # 'django_markwhat',    
+    # 'cmsplugin_markdown', # Markdown-2.6.11 django-markwhat-1.6.0
 )
 
 
@@ -234,7 +240,7 @@ DATABASES = {
         'CONN_MAX_AGE': 0,
         'ENGINE': 'django.db.backends.sqlite3',
         'HOST': 'localhost',
-        'NAME': 'project1.db',
+        'NAME': os.path.join(BASE_DIR, 'project1.db'),
         'PASSWORD': '',
         'PORT': '',
         'USER': ''
@@ -252,3 +258,48 @@ THUMBNAIL_PROCESSORS = (
     'easy_thumbnails.processors.filters',
     'easy_thumbnails.processors.background',
 )
+
+# markdown_deux.conf.settings will import this file, it import reversely, someting wrong with the value
+# from markdown_deux.conf.settings import MARKDOWN_DEUX_DEFAULT_STYLE
+import re
+
+MARKDOWN_DEUX_STYLES = {
+    # "default": MARKDOWN_DEUX_DEFAULT_STYLE,
+    "trusted": {
+        "extras": {
+            "code-friendly": None,
+        },
+        # Allow raw HTML (WARNING: don't use this for user-generated
+        # Markdown for your site!).
+        "safe_mode": False,
+    },
+    # Here is what http://code.activestate.com/recipes/ currently uses.
+    "recipe": {
+        # "extras": {
+        #     "code-friendly": None,
+        # },
+        # "safe_mode": "escape",
+        "link_patterns": [
+            # Transform "Recipe 123" in a link.
+            (re.compile(r"recipe\s+#?(\d+)\b", re.I),
+             r"http://code.activestate.com/recipes/\1/"),
+        ],
+        "extras": {
+            "code-friendly": None,
+            "pyshell": None,
+            "demote-headers": 3,
+            "link-patterns": None,
+            # `class` attribute put on `pre` tags to enable using
+            # <http://code.google.com/p/google-code-prettify/> for syntax
+            # highlighting.
+            "html-classes": {"pre": "prettyprint"},
+            "cuddled-lists": None,
+            "footnotes": None,
+            "header-ids": None,
+            # "fenced-code-blocks" : {'cssclass': 'mycodehilite', "prestyles":"background-color: #d2dee8;"},
+            "fenced-code-blocks" : {'cssclass': 'mycodehilite',},
+        },
+        "safe_mode": "escape",
+
+    }
+}

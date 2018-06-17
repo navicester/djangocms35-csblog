@@ -20,3 +20,14 @@ html5lib>=0.999999,<0.99999999
 Pillow>=3.0
 django-sekizai>=0.9
 six
+
+djangocms_markdown
+
+aldryn-newsblog
+aldryn_background_image
+django-bootstrap3
+aldryn_bootstrap3
+
+djangocms-comments
+
+pygments==2.2.0

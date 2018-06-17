@@ -1,5 +1,30 @@
 {% extends "aldryn_newsblog/base.html" %}
 {% load i18n cms_tags apphooks_config_tags %}
+{% load staticfiles %}
+
+{% block header_css %}
+	<link href="{% static 'css/code.css' %}" rel='stylesheet' type='text/css'>
+    <link href="{% static 'css/default.css' %}" rel='stylesheet' type='text/css'>
+    <link href="{% static 'prettify/css/prettify.min.css' %}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block head_js %}
+    <script src="{% static 'prettify/js/run_prettify.min.js' %}"></script>
+    <script src="{% static 'prettify/js/prettify.min.js' %}"></script>
+{% endblock %}
+
+    <link href="https://cdn.bootcss.com/prettify/r298/prettify.min.css" rel='stylesheet' type='text/css'>
+    <script src="https://cdn.bootcss.com/prettify/r298/prettify.min.js"></script>
+    <script src="https://cdn.bootcss.com/prettify/r298/run_prettify.min.js"></script>
+
+<style>
+{% block style %}
+p.cms-plugin img {
+    width: 100%;
+    height: auto;
+}
+{% endblock %}
+</style>
 
 {% block title %}
     {{ article.title }} - {{ block.super }}
@@ -20,3 +45,5 @@
         {% endif %}
     </ul>
 {% endblock %}
+
+

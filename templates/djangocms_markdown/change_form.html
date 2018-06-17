@@ -1,0 +1,43 @@
+{% extends "admin/cms/page/plugin/change_form.html" %}
+{% load staticfiles %}
+
+{% block field_sets %}
+    {{ block.super }}
+    <div id="epiceditor"></div>
+    <script src="{% static 'djangocms_markdown/js/jquery-3.1.0.min.js' %}"></script>
+    <script>jQuery.noConflict();</script>
+    <script src="{% static 'djangocms_markdown/js/epiceditor.min.js' %}"></script>
+
+    <script>
+        jQuery(function($) {
+            // Hide the native fieldset
+            $('#markdown_form').find('fieldset').hide();
+
+            var opts = {
+                basePath: '{% static 'djangocms_markdown' %}',
+                clientSideStorage: false,
+                textarea: 'id_body', // Sync with #id_body
+                focusOnLoad: true,
+                button: { fullscreen: false },
+                autogrow: true
+            };
+
+            var editor = new EpicEditor(opts).load(function() {
+                var dir = $("body").css("direction");
+                $("iframe").each(function() {
+                    if ($(this).attr("id").substring(0, 10) == "epiceditor") {
+                        var iframe = $(this).contents();
+                        $('html', iframe).attr("dir", dir);
+                        $('iframe', iframe).each(function() {
+                            var subiframe = $(this).contents();
+                            $('html', subiframe).attr("dir", dir);
+                        });
+                    }
+                });
+            });
+
+            // Get caret position: editor.editorIframeDocument.getSelection().focusOffset
+            // Insert data: editor.editorIframeDocument.getSelection().focusNode.insertData()
+        });
+    </script>
+{% endblock %}

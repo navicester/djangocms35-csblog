@@ -1,6 +1,7 @@
 # backup files
 _backup/
 
+env/
 env-*/
 site-packages-pyd/
 
