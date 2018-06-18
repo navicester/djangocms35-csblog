@@ -6,6 +6,6 @@ p.cms-plugin,
 
 p.cms-plugin img,
 .post-content p img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
 }
