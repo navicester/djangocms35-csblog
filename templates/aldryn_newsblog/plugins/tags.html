@@ -1,11 +1,36 @@
 {% load i18n apphooks_config_tags %}
 
-<ul>
+<style type="text/css">
+    ul.tags div.tag-block.active{
+        background-color: #0085a1;
+    }
+
+    ul.tags div.tag-block{
+        float: left;
+        background-color: grey;
+        padding:6px; 
+        margin-right: 2px;
+        margin-top: 8px;
+        border-radius: 3px;
+    }
+
+    ul.tags div a{
+        color: white;
+        font-size: 20px;
+    }
+
+</style>
+
+
+<ul class="tags">
     {% comment %}
     <li{% if not newsblog_tag %} class="active"{% endif %}>
         <a href="{% namespace_url "article-list" namespace=instance.app_config.namespace default='' %}">{% trans "All" %}</a>
     </li>
     {% endcomment %}
+    <div class="tag-block {% if not newsblog_tag %} active{% endif %}"  style="">
+            <a href="{% namespace_url "article-list" namespace=instance.app_config.namespace default='' %}">{% trans "All" %}</a>
+    </div>
 
     {% for tag in tags %}
         {% comment %}
@@ -16,6 +41,9 @@
             </a>
         </li>
         {% endcomment %}
-        <a href="{% namespace_url "article-list-by-tag" tag.slug namespace=instance.app_config.namespace default='' %}"><span class="label label-primary" style="background-color: grey;color:white;padding:2px; margin-right: 2px;margin-top: 2px;border-radius: 3px;">{{ tag.name }}</span></a>
+        <div class="tag-block {% if newsblog_tag.id == tag.id %} active{% endif %}"  style="">
+            <a href="{% namespace_url "article-list-by-tag" tag.slug namespace=instance.app_config.namespace default='' %}"><span class="label label-primary" style="color:white;">{{ tag.name }}</span><small> ({{ tag.article_count }})</small></a>
+        </div>
     {% endfor %}
+    <div style="clear: both;"></div>
 </ul>
