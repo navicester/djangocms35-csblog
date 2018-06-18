@@ -112,6 +112,10 @@ TEMPLATES = [
 
 
 MIDDLEWARE = (
+    'tracking.middleware.BannedIPMiddleware',
+    'tracking2.middleware.VisitorTrackingMiddleware',
+
+
     'cms.middleware.utils.ApphookReloadMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -121,10 +125,14 @@ MIDDLEWARE = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware',
+
+    'tracking.middleware.VisitorTrackingMiddleware',
+    'tracking.middleware.VisitorCleanUpMiddleware',    
+
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.language.LanguageCookieMiddleware'
+    'cms.middleware.language.LanguageCookieMiddleware'      
 )
 
 INSTALLED_APPS = (
@@ -182,6 +190,10 @@ INSTALLED_APPS = (
 	
     # 'django_markwhat',    
     # 'cmsplugin_markdown', # Markdown-2.6.11 django-markwhat-1.6.0
+
+    'tracking',
+    'tracking2',
+    # 'crispy_forms',
 )
 
 

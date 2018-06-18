@@ -1,4 +1,5 @@
 {% load cms_tags menu_tags sekizai_tags staticfiles %}
+{% load tracking_tags %}
 
 <!DOCTYPE html>
 <html lang="{{LANGUAGE_CODE}}">
@@ -183,6 +184,22 @@
             <p class="copyright text-muted">Copyright &copy; 苏ICP备18021979号-1 2018</p>
           </div>
         </div>
+
+        {% if request.user.is_superuser %}
+        <div class="row">
+            <div class="col-sm-12 text-center">                
+                <p><small>
+                    {% visitors_on_site as visitors %}
+                    {{ visitors }} active user{{ visitors|pluralize }} |                 
+                    
+                    {% visitors_on_page as same_page %}                
+                    {{ same_page }} of {{ visitors }} active user{{ visitors|pluralize }}
+                    {{ same_page|pluralize:"is,are" }} reading this page
+                    </small>
+                </p>
+            </div>
+        </div> 
+        {% endif %}    
       </div>
     </footer>
 
