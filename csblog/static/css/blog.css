@@ -1,5 +1,11 @@
-p.cms-plugin, p.cms-plugin>ul>li {word-wrap: break-word!important;}
-p.cms-plugin img {
+p.cms-plugin, 
+.post-content p>ul>li, 
+.post-content p>em {
+    word-wrap: break-word!important;
+}
+
+p.cms-plugin img,
+.post-content p img {
     width: 100%;
     height: auto;
 }
