@@ -1,5 +1,5 @@
 p.cms-plugin, 
-.post-content p>ul>li, 
+.post-content ul>li, 
 .post-content p>em {
     word-wrap: break-word!important;
 }
