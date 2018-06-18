@@ -1,4 +1,4 @@
-p.cms-plugin {word-wrap: break-word;}
+p.cms-plugin, p.cms-plugin>ul>li {word-wrap: break-word!important;}
 p.cms-plugin img {
     width: 100%;
     height: auto;
