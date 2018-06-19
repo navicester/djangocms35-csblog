@@ -55,7 +55,7 @@
 
     {% endcomment %}
 
-    {% if article.tags %}
+    {% if article.tags and article.tags.count %}
         <p>{% trans "tags" %}:
             {% for tag in article.tags.all %}
                 <span class="category-item">
