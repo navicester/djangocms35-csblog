@@ -29,7 +29,7 @@
         </p>
     {% endif %}
 
-    {% if article.categories.exists %}
+    {% if detail_view and article.categories.exists %}
         <p>{% trans "categories" %}:
             {% for category in article.categories.all %}
                 <span class="category-item">
@@ -55,7 +55,7 @@
 
     {% endcomment %}
 
-    {% if article.tags and article.tags.count %}
+    {% if detail_view and article.tags and article.tags.count %}
         <p>{% trans "tags" %}:
             {% for tag in article.tags.all %}
                 <span class="category-item">
