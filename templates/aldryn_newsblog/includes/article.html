@@ -7,6 +7,17 @@
     margin-right: 5px;
 }
 
+.category-item-title{
+    background-color: #007bff;
+    border-radius: 3px;
+    padding: 1px;
+    /*margin-right: 5px;*/
+    margin: 5px 5px;
+    color: white;
+    /*font-size: 18px;*/
+    float: left;
+}
+
 .category-item a{
     color: white;
 }
@@ -72,13 +83,21 @@
     <div class="post-preview">
         <a href="{% namespace_url 'article-detail' article.slug namespace=namespace default='' %}">
             <h2 class="post-title">
+                {% if not detail_view and article.categories.exists %}
+                    {% for category in article.categories.all %}
+                        <div class="category-item-title">{{ category.name }}</div>
+                    {% endfor %}
+                {% endif %}
+                <div style="float: left;">
                 {% render_model article "title" "" "" "striptags" %}
+                </div>
+                <div style="clear: both;"></div>
             </h2>
         </a>            
         {% if article.lead_in %}
         <h3 class="post-subtitle">
             {% if not detail_view %}
-                {% render_model article "lead_in" "" "" "truncatechars:'30'|striptags" %}
+                {% if article.featured_image_id %}<img src="{% thumbnail article.featured_image 100x80 crop subject_location=article.featured_image.subject_location %}" alt="{{ article.featured_image.alt }}">{% endif %} {% render_model article "lead_in" "" "" "truncatechars:'30'|striptags" %}
             {% else %}
                 {% render_model article "lead_in" %}
             {% endif %}
