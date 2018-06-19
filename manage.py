@@ -9,7 +9,7 @@ if __name__ == "__main__":
     sys.path.insert(0, os.path.join(root, 'site-packages-pip-fail'))
     sys.path.insert(0, os.path.join(root, 'site-packages-upgrade-stop'))
     sys.path.insert(0, os.path.join(root, 'site-packages-update'))
-    sys.path.insert(0, os.path.join(root, '..','env','site-packages'))
+    sys.path.insert(0, os.path.join(root, '..','env','Lib','site-packages'))
     if not 'SERVER_SOFTWARE' in os.environ:         
         sys.path.insert(0, os.path.join(root, 'site-packages-pyd', socket.gethostname()))	
         print socket.gethostname()
