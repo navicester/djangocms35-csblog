@@ -8,7 +8,7 @@
 }
 
 .category-item-title{
-    background-color: #007bff;
+    background-color: #dc3545;
     border-radius: 2px;
     padding: 1px;
     /*margin-right: 5px;*/
@@ -26,6 +26,10 @@
     height: auto;
 }
 
+.post-preview .post-subtitle {
+    font-weight: 300;
+    margin: 0 0 10px;
+}
 </style>
 
 <article class="article
@@ -103,7 +107,7 @@
         </h3>
         {% endif %}
 
-        <p class="post-meta">Posted by {% include "aldryn_newsblog/includes/author.html" with author=article.author %} on {{ article.publishing_date|date:"F d, Y" }}    </p>
+        <p class="post-meta">{% include "aldryn_newsblog/includes/author.html" with author=article.author %} {{ article.publishing_date|date:"F d, Y" }}    </p>
     </div>
     <hr>
 
