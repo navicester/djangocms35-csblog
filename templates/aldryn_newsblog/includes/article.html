@@ -1,25 +1,42 @@
 {% load i18n staticfiles thumbnail cms_tags apphooks_config_tags %}
 
 <style type="text/css">
-.category-item{
-    background-color: grey;
-    padding: 5px;
-    margin-right: 5px;
+p.category-para,
+p.author-info{
+    line-height: 1.5;
+    margin: 10px 0;
 }
 
-.category-item-title{
+.category-title{
+    /*background-color: #007bff;*/
+    /*padding: 5px;*/
+    /*margin-right: 5px;*/
+    /*font-size: smaller;*/
+    /*color: white; */
+    font-weight: bold;
+}
+
+.category-item{
+    /*background-color: #007bff;*/
+    /*padding: 5px;*/
+    /*margin-right: 5px;*/
+    /*font-size: smaller;*/
+}
+
+.category-item a{
+    /*color: white;*/
+}
+
+
+.category-item-list{
     background-color: #dc3545;
     border-radius: 2px;
     padding: 1px;
-    /*margin-right: 5px;*/
     margin: 0px;
     color: white;
     line-height: 1.5;
 }
 
-.category-item a{
-    color: white;
-}
 
 .featured-image img{
     width: 100%;
@@ -43,57 +60,50 @@
         </p>
     {% endif %}
 
-    {% if detail_view and article.categories.exists %}
-        <p>{% trans "categories" %}:
-            {% for category in article.categories.all %}
-                <span class="category-item">
-                <a href="{% namespace_url 'article-list-by-category' category.slug namespace=namespace default='' %}">{{ category.name }}</a>
-                </span>
-                {% if not forloop.last %}, {% endif %}
-            {% endfor %}
-        </p>
-    {% endif %}
-
-    {% comment %}
-    <h2>
-        {% if not detail_view %}
-            <a href="{% namespace_url 'article-detail' article.slug namespace=namespace default='' %}">{% render_model article "title" %}</a>
-        {% else %}
-            {% render_model article "title" %}
-        {% endif %}
-    </h2>
-
-    {% endcomment %}
-
-    {% if detail_view  %}
-    <p>{% include "aldryn_newsblog/includes/author.html" with author=article.author %} {{ article.publishing_date|date }}</p>    
-    {% endif %}
-
-    {% if detail_view and article.tags and article.tags.count %}
-        <p>{% trans "tags" %}:
-            {% for tag in article.tags.all %}
-                <span class="category-item">
-                <a href="{% namespace_url 'article-list-by-tag' tag=tag.slug namespace=namespace default='' %}">{{ tag.name }}</a>
-                </span>
-            {% endfor %}
-        </p>
-    {% endif %}
-
-    {% comment %}
-    {% render_model article "lead_in" %}  
-    {% endcomment %}
-
     <div class="post-preview">
+        {% if not detail_view %}
         <a href="{% namespace_url 'article-detail' article.slug namespace=namespace default='' %}">
             <h2 class="post-title">
                 {% if not detail_view and article.categories.exists %}
                     {% for category in article.categories.all %}
-                        <span class="category-item-title">{{ category.name }}</span>
+                        <span class="category-item-list">{{ category.name }}</span>
                     {% endfor %}
                 {% endif %}                
                 {% render_model article "title" "" "" "striptags" %}
             </h2>
-        </a>            
+        </a>
+        {% else %}
+            <h2>{% render_model article "title" %}</h2>
+        {% endif %}
+
+        {% if detail_view  %}
+        <p class="author-info">{% include "aldryn_newsblog/includes/author.html" with author=article.author %} {{ article.publishing_date|date }}</p>    
+        {% endif %}
+
+        {% if detail_view and article.categories.exists %}
+            <p class="category-para"><span class="category-title">{% trans "categories" %}:</span>
+                {% for category in article.categories.all %}
+                    <span class="category-item">
+                    <a href="{% namespace_url 'article-list-by-category' category.slug namespace=namespace default='' %}">{{ category.name }}</a>
+                    </span>
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
+
+
+        {% if detail_view and article.tags and article.tags.count %}
+            <p class="category-para"><span class="category-title">{% trans "tags" %}:</span>
+                {% for tag in article.tags.all %}
+                    <span class="category-item">
+                    <a href="{% namespace_url 'article-list-by-tag' tag=tag.slug namespace=namespace default='' %}">{{ tag.name }}</a>
+                    </span>
+                    {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </p>
+        {% endif %}
+
+        <hr>
         {% if article.lead_in %}
         <h3 class="post-subtitle">
             {% if not detail_view %}

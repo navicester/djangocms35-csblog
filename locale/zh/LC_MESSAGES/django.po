@@ -1642,3 +1642,10 @@ msgstr "手机"
 #: .\templates\aldryn_people\includes\person.html:115
 msgid "Download vCard"
 msgstr "下载名片"
+
+
+msgid "tags"
+msgstr "标签"
+
+msgid "categories"
+msgstr "分类"
