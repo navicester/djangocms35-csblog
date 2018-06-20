@@ -1,1 +1,1 @@
-python manage-eclipse.py compilemessages -l zh
+python manage.py compilemessages -l zh

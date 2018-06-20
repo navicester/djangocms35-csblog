@@ -1,1 +1,1 @@
-python manage-eclipse.py makemessages -l zh
+python manage.py makemessages -l zh
