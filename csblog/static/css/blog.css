@@ -9,7 +9,7 @@ p.cms-plugin,
 
 .post-content ul>li{
     font-size: smaller;
-    font-style: italic;
+    /*font-style: italic;*/
 }
 p.cms-plugin img,
 .post-content p img {

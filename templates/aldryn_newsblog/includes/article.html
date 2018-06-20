@@ -99,8 +99,9 @@
             {% if not detail_view %}
                 {% comment %}
                 {% if article.featured_image_id %}<img src="{% thumbnail article.featured_image 80x60 crop subject_location=article.featured_image.subject_location %}" alt="{{ article.featured_image.alt }}">{% endif %} 
-                {% endcomment %}
                 {% render_model article "lead_in" "" "" "truncatechars:'30'|striptags" %}
+                {% endcomment %}
+                {% render_model article "lead_in" %}
             {% else %}
                 {% render_model article "lead_in" %}
             {% endif %}
