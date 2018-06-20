@@ -63,11 +63,11 @@
         {% endif %}
     </h2>
 
-    <p>{{ article.publishing_date|date }}</p>
-
-    {% include "aldryn_newsblog/includes/author.html" with author=article.author %}
-
     {% endcomment %}
+
+    {% if detail_view  %}
+    <p>{% include "aldryn_newsblog/includes/author.html" with author=article.author %} {{ article.publishing_date|date }}</p>    
+    {% endif %}
 
     {% if detail_view and article.tags and article.tags.count %}
         <p>{% trans "tags" %}:
@@ -107,7 +107,9 @@
         </h3>
         {% endif %}
 
-        <p class="post-meta">{% include "aldryn_newsblog/includes/author.html" with author=article.author %} {{ article.publishing_date|date:"F d, Y" }}    </p>
+        {% if not detail_view  %}
+        <p class="post-meta">Posted by {% include "aldryn_newsblog/includes/author.html" with author=article.author %} on {{ article.publishing_date|date:"F d, Y" }} </p>
+        {% endif %}
     </div>
     <hr>
 

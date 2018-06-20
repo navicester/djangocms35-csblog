@@ -1,7 +1,7 @@
 {% load i18n staticfiles thumbnail apphooks_config_tags %}
 
 {% if author %}
-    {% if author.visual %}
+    {% if author.visual and detail_view %}
         {% thumbnail author.visual "50x50" crop upscale subject_location=author.visual.subject_location as author_image %}
         <img src="{{ author_image.url }}" width="50" height="50" alt="{{ author.name }}">
     {% endif %}

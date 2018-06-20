@@ -1,10 +1,16 @@
 p.cms-plugin, 
 .post-content p,
 .post-content ul>li, 
-.post-content p>em {
+.post-content p>em,
+.comments-list .panel-body
+{
     word-wrap: break-word!important;
 }
 
+.post-content ul>li{
+    font-size: smaller;
+    font-style: italic;
+}
 p.cms-plugin img,
 .post-content p img {
     max-width: 100%;
