@@ -42,4 +42,15 @@ class Entry(models.Model):
     class Meta:
         verbose_name = _("Entry")
         verbose_name_plural = _("Entry")
-        ordering = ['order', '-updated']        
+        ordering = ['order', '-updated']   
+
+from django.db import models
+from cms.models import CMSPlugin
+from serials.models import Serial
+
+
+class SerialPluginModel(CMSPlugin):
+    serial = models.ForeignKey(Serial)
+
+    def __unicode__(self):
+        return self.serial.title             
