@@ -1,0 +1,33 @@
+    <div class="row">
+        <div class="col-sm-6 push-sm-6">
+            <img src="{{obj.image.url}}" class="img-fluid">
+        </div>
+
+        <div class="col-sm-6 pull-sm-6">
+            <h1 class="serial-headline">
+                <a href="{{object.get_absolute_url}}"><small><b>{{object.title}}</b></small></a>
+            </h1>
+            <p class="lead">
+                {{object.abstract}}
+            </p>
+        </div>
+    </div>
+
+    {% if show_entry_list %}
+    <br>    
+    <div class="row">
+        <div class="col-sm-10">
+            <!-- <h2>{{obj}}</h2> -->
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-sm-2">
+        </div>
+    </div>          
+    <div class="list-group"> 
+        {% for item in object.entry_set.all %}
+        <a class="list-group-item justify-content-between {% if forloop.first %}first-lecture{% endif  %}  " href="{{item.url}}"> 
+            <h3 class="mb-1">{{item.title}}</h3>
+        </a>
+        {% endfor %}                    
+    </div>
+    {% endif %}

@@ -1,0 +1,23 @@
+
+{% extends "serials_base.html" %}
+{% load i18n %}
+
+{% block content %}
+
+        {% for obj in object_list %}
+            {% include "serial_list_content.html" with object=obj show_entry_list=False %}
+            <div class="row" style="padding-top: 20px;">
+                <div class="col-sm-12">
+                    <div class="text-center"><a href="{{obj.get_absolute_url}}" class="btn btn-primary btn-lg">{% trans "View Serial" %}</a></div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            {% if not forloop.last %}
+            <hr>
+            {% endif %}
+            
+        {% endfor %}
+
+{% endblock %}

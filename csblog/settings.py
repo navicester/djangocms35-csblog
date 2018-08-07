@@ -161,6 +161,7 @@ INSTALLED_APPS = (
     'djangocms_video',
     'djangocms_column',	
     'csblog',
+    'serials',
 
     # you will probably need to add these
     'aldryn_apphooks_config',
