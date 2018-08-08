@@ -19,7 +19,7 @@ class Serial(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("serial_detail", kwargs={"pk":self.pk})
+        return reverse("serials:serial_detail", kwargs={"pk":self.pk})
 
     class Meta:
         verbose_name = _("Serial")
