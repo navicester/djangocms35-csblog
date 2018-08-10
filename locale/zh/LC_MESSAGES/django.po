@@ -1649,3 +1649,6 @@ msgstr "标签"
 
 msgid "categories"
 msgstr "分类"
+
+msgid "Comments"
+msgstr "评论"
