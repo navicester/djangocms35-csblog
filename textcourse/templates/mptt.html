@@ -1,0 +1,27 @@
+{% load mptt_tags %}
+
+<style type="text/css">
+    a.active{
+        color: red;
+    }
+
+    li{
+        /*margin:0; 
+        padding:0; */
+        list-style-type:none
+    }
+
+</style>
+{% recursetree nodes %}
+<ul>
+    {% if node.is_leaf_node %}
+        <a class="{% if node.id == object.id %}active{% endif %} list-group-item" href="{{node.get_absolute_url}}">{{ node.title }}</a>
+    {% else %}
+        <b><a class="{% if node.id == object.id %}active{% endif %} list-group-item" href="{{node.get_absolute_url}}">{{ node.title }}</a></b>
+        <li class="child">
+            {{ children }}
+        </li>
+    {% endif %}
+</ul>
+{% endrecursetree %}
+

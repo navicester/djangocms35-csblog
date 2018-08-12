@@ -1,0 +1,55 @@
+{% extends "textcourse_base.html" %}
+{% load staticfiles %}
+
+{% block header_css %}
+
+    <link href="{% static 'css/default.css' %}" rel='stylesheet' type='text/css'>    
+    <link href="{% static 'css/code.css' %}" rel='stylesheet' type='text/css'>    
+{% endblock %}
+<link href="{% static 'css/blog.css' %}" rel='stylesheet' type='text/css'>
+
+
+{% block content_wrapper %}
+
+<style type="text/css">
+    .sidebar>ul{
+        padding-left: 1px;
+    }
+
+    .sidebar ul{
+        padding-bottom: 1px;
+        margin-bottom: 1px;
+    }
+
+    .sidebar a{
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border: hidden;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 18px;
+        line-height: 20px;
+        color: #444;
+    }
+
+    body{
+        background-color: #eeeeee;
+    }
+
+</style>
+
+<div class="container-fluid">      
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="sidebar list-group-item">
+                <span>Contents:</span>
+                <hr>
+                {% include "mptt.html" %}
+            </div>
+        </div>
+        <div class="col-sm-9">
+            {{object.get_markdown}}
+        </div>
+    </div>
+</div>
+
+{% endblock%}

@@ -134,6 +134,7 @@
     {% endblock %}
 
     <!-- Main Content -->
+    {% block content_wrapper %}
     <div class="container">      
       {% block content %}
       <div class="row">
@@ -147,6 +148,7 @@
       </div>
       {% endblock %}
     </div>
+    {% endblock %}
 
     <hr>
 

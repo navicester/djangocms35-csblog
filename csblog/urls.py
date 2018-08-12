@@ -21,6 +21,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     
     url(r'^tracking2/', include('tracking2.urls')), 
+    url(r'^course/', include('textcourse.urls', namespace="textcourse")), 
     url(r'^admin/', include(admin.site.urls)),  # NOQA
     url(r'^', include('cms.urls')),
     url(r'^djangocms_comments/', include('djangocms_comments.urls')),

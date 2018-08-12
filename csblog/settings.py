@@ -84,6 +84,7 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'csblog', 'templates'),
                 os.path.join(BASE_DIR, 'templates'),
                 os.path.join(BASE_DIR, 'site-packages-update', 'djangocms_comments', 'templates'),
+                # os.path.join(BASE_DIR, 'env', 'Lib', 'site-packages', 'mptt', 'templates'),
                 ],
         'OPTIONS': {
             'context_processors': [
@@ -144,7 +145,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
-    'django.contrib.messages',
+    'django.contrib.messages', 
     'cms',
     'menus',
     'sekizai',
@@ -162,7 +163,10 @@ INSTALLED_APPS = (
     'djangocms_column',	
     'csblog',
     'serials',
+    'textcourse',
 
+    'mptt',   
+    
     # you will probably need to add these
     'aldryn_apphooks_config',
     'aldryn_categories',
@@ -195,6 +199,8 @@ INSTALLED_APPS = (
     'tracking',
     'tracking2',
     # 'crispy_forms',
+
+
 )
 
 
