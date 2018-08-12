@@ -22,9 +22,10 @@ def article_list(request):
     return render(request, 'article_list.html', {'nodes': nodes})
 
 
-def article_detail(request, pk):
-    node= MPTTArticle.objects.get(pk=pk)
-    nodes= MPTTArticle.objects.all()
+def article_detail(request, pk1, pk):
+    articles = MPTTArticle.objects.filter(course__id=pk1)
+    node= articles.get(pk=pk)
+    nodes= articles
      
     return render(request, 'article_detail.html', {
             'object': node,

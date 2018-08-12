@@ -32,7 +32,7 @@ class Course(models.Model):
         ordering = ['order', '-updated']
 
 class Article(models.Model):
-    course = models.ForeignKey(Course, blank=True, null=True)
+    course = models.ForeignKey(Course, blank=False, null=False)
     title = models.CharField(max_length=120)
     content = models.TextField()
     order = models.IntegerField(_("order"), blank=True, null=True, default=-1)
@@ -71,7 +71,10 @@ class MPTTArticle(MPTTModel, Article):
         ordering=['tree_id','lft']
 
     def get_absolute_url(self):
-        return reverse("textcourse:article_detail", kwargs={"pk": self.pk})    
+        course_pk = None
+        if self.course and self.course.pk:
+            course_pk = self.course.pk
+        return reverse("textcourse:article_detail", kwargs={"pk1": course_pk, "pk": self.pk})    
 
     def  __unicode__(self):
         return "{}{}".format(self.get_index(), self.title)
