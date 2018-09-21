@@ -68,6 +68,6 @@
 .mycodehilite .vm { color: #19177C } /* Name.Variable.Magic */
 .mycodehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
 
-.mycodehilite.h5 .mycodehilite.h6{
+.mycodehilite h5, .mycodehilite h6{
     margin: 30px 0!important;
 }
