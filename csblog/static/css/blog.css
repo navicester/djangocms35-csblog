@@ -33,15 +33,17 @@ h6{
     margin-left: 60px!important;
 }
 
+blockquote{
+    font-size: smaller;
+}
+
 .container-fluid a, .container a{
-    color: #007bff;
+    color: #2279d6;
     font-size: smaller;
 }
 
 .container-fluid a:hover, .container a:hover{
     color: #17a2b8;
+    text-decoration: underline!important;
 }
 
-blockquote{
-    font-size: smaller;
-}
