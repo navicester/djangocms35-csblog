@@ -90,6 +90,6 @@ class MPTTArticle(MPTTModel, Article):
         return "{} - {}".format(self.get_index(), self.title)
 
     def  __str__(self):
-        return "{}{}".format(self.get_index(), self.title)
+        return "{} - {}".format(self.get_index(), self.title)
 
     objects = ArticleManager()
