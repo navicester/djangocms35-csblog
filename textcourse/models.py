@@ -31,6 +31,7 @@ class Course(models.Model):
         verbose_name_plural = _("Course")
         ordering = ['order', '-updated']
 
+
 class Article(models.Model):
     course = models.ForeignKey(Course, blank=False, null=False)
     title = models.CharField(max_length=120)
@@ -60,6 +61,11 @@ class Article(models.Model):
     class Meta:
         abstract = True
 
+
+class ArticleManager(models.Manager):
+    def root(self, *args, **kwargs):
+        return super(ArticleManager,self).filter(parent=None)
+
 class MPTTArticle(MPTTModel, Article):
 
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
@@ -81,3 +87,5 @@ class MPTTArticle(MPTTModel, Article):
 
     def  __str__(self):
         return "{}{}".format(self.get_index(), self.title)
+
+    objects = ArticleManager()

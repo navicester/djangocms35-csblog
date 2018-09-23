@@ -17,7 +17,7 @@ def course_detail(request, pk):
 
 def article_list(request):
     # nodes= MPTTArticle.objects.root_nodes()
-    nodes= MPTTArticle.objects.all()
+    nodes= MPTTArticle.objects.filter(parent=None)
      
     return render(request, 'article_list.html', {'nodes': nodes})
 
