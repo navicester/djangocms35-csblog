@@ -2,6 +2,7 @@ from django.contrib import admin
 from mptt.admin import MPTTModelAdmin
 from .models import MPTTArticle, Course
 # Register your models here.
+from .forms import ArticleForm
  
 class MPTTArticleInline(admin.TabularInline):
 
@@ -11,14 +12,17 @@ class MPTTArticleInline(admin.TabularInline):
 
 class MPTTArticleAdmin(MPTTModelAdmin):
     list_display = [
-        'course',
-        'order',
+        'index',        
         'title',
+        'order',
+        'course',
     ]
 
     list_filter = [
         'course'
     ]
+
+    form = ArticleForm
 
 
 class CourseAdmin(admin.ModelAdmin):

@@ -58,6 +58,10 @@ class Article(models.Model):
         markdown_content = markdown(content,'recipe')
         return mark_safe(markdown_content)
 
+    @property
+    def index(self):
+        return self.get_index()
+
     class Meta:
         abstract = True
 
@@ -83,7 +87,7 @@ class MPTTArticle(MPTTModel, Article):
         return reverse("textcourse:article_detail", kwargs={"pk1": course_pk, "pk": self.pk})    
 
     def  __unicode__(self):
-        return "{}{}".format(self.get_index(), self.title)
+        return "{} - {}".format(self.get_index(), self.title)
 
     def  __str__(self):
         return "{}{}".format(self.get_index(), self.title)
