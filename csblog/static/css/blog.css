@@ -44,6 +44,6 @@ blockquote{
 
 .container-fluid a:hover, .container a:hover{
     color: #17a2b8;
-    text-decoration: underline!important;
+    /*text-decoration: underline!important;*/
 }
 
