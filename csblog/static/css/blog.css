@@ -41,3 +41,7 @@ h6{
 .container-fluid a:hover, .container a:hover{
     color: #17a2b8;
 }
+
+blockquote{
+    font-size: smaller;
+}
