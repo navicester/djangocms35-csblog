@@ -1,8 +1,56 @@
 {% extends "textcourse_base.html" %}
 {% load staticfiles i18n %}
+{% load pagination_tags %}
+
+<style>
+{% block style %}
+{{block.super}}
+.pagination a,
+.pagination .current,
+.pagination .prev,
+.pagination .next {
+    border: solid 1px #dbdee2;    
+    color:#007bff;
+    /*background-color: #e6e6e6;*/
+}
+
+.pagination .current{
+    background-color: #007bff;
+    color: white;
+}
+
+
+.pagination .prev,
+.pagination .next {
+    padding: 5px;
+}
+
+.pagination .current,
+.pagination a{
+    padding: 5px 15px;
+}
+
+.pagination .disabled{
+    /*background-color: #dbdee2; */
+    color: grey;
+}
+
+.pagination .prev{
+    border-radius: 5px 0px 0px 5px;
+}
+
+.pagination .next{
+    border-radius: 0px 5px 5px 0px;
+}
+
+{% endblock %}
+</style>
+
 
 {% block content %}
 
+<hr style="height: 10px;">
+    {% autopaginate object_list 1 %}
     {% for obj in object_list %}
         {% include "serial_list_content.html" with object=obj show_entry_list=False %}
         <div class="row" style="padding-top: 20px;">
@@ -18,5 +66,9 @@
         {% endif %}
 
     {% endfor %}
+
+    <div class="text-center">
+        {% paginate %}
+    </div>
 
 {% endblock%}
