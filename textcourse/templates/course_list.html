@@ -50,7 +50,7 @@
 {% block content %}
 
 <hr style="height: 10px;">
-    {% autopaginate object_list 1 %}
+    {% autopaginate object_list 10 %}
     {% for obj in object_list %}
         {% include "serial_list_content.html" with object=obj show_entry_list=False %}
         <div class="row" style="padding-top: 20px;">
