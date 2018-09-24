@@ -32,5 +32,13 @@ class CourseAdmin(admin.ModelAdmin):
         # MPTTArticleInline,
     ]
 
+    list_display = [
+        'title',
+        'order',
+        'active'
+    ]
+
+    list_editable = ["order", "active"]
+
 admin.site.register(MPTTArticle, MPTTArticleAdmin)
 admin.site.register(Course, CourseAdmin)
