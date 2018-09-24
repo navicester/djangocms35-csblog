@@ -22,6 +22,8 @@ class MPTTArticleAdmin(MPTTModelAdmin):
         'course'
     ]
 
+    # list_editable = ["order",]
+
     form = ArticleForm
 
 
