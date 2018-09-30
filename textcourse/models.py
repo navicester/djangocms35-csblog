@@ -19,7 +19,10 @@ class CourseManager(models.Manager):
         return CourseQuerySet(self.model, using=self._db)
 
     def all(self, *args, **kwargs):
-        return self.get_queryset().active()
+        is_superuser = kwargs.get('is_superuser', None)
+        if not is_superuser:
+            return self.get_queryset().active()
+        return self.get_queryset()
 
 
 class Course(models.Model):
@@ -85,10 +88,16 @@ class ArticleManager(models.Manager):
         return models.query.QuerySet(self.model, using=self._db)
 
     def root(self, *args, **kwargs):
-        return super(ArticleManager,self).filter(parent=None).filter(active=True)
+        try:
+            return self.all().filter(parent=None)
+        except:
+            return None
 
     def all(self, *args, **kwargs):
-        return self.get_queryset().filter(active=True)
+        is_superuser = kwargs.get('is_superuser', None)
+        if not is_superuser:        
+            return self.get_queryset().filter(active=True)
+        return self.get_queryset()
 
 class MPTTArticle(MPTTModel, Article):
 
