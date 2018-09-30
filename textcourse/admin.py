@@ -16,13 +16,14 @@ class MPTTArticleAdmin(MPTTModelAdmin):
         'title',
         'order',
         'course',
+        'active',
     ]
 
     list_filter = [
         'course'
     ]
 
-    # list_editable = ["order",]
+    list_editable = ["active",]
 
     form = ArticleForm
 
