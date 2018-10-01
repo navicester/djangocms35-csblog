@@ -51,7 +51,7 @@ def article_detail(request, pk1, pk):
 def article_search_list(request):
 
     q = request.GET.get('q', None)
-    print q
+    # print q
     if q:
         nodes= MPTTArticle.objects.all(is_superuser=request.user.is_superuser).filter(Q(title__icontains=q) | Q(content__icontains=q))
     else:
