@@ -4,7 +4,7 @@
       </div>        
       <div class="col-sm-6 pull-sm-6">
         <div class="input-group">
-          <input type="text" name="q" id="search-input" class="form-control" placeholder="搜索内容" required="">
+          <input type="text" name="q" id="search-input" class="form-control" value="{{request.GET.q}}" placeholder="搜索内容" required="">
           <span class="input-group-btn">
             <button class="btn btn-default" type="submit">Go!</button>
           </span>
