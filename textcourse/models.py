@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from markdown_deux import markdown
 from django.utils.safestring import mark_safe
+# from django.conf import settings
 
 # Create your models here.
 
@@ -56,6 +57,7 @@ class Article(models.Model):
     active = models.BooleanField(_("active"), default=True)
     updated = models.DateTimeField(auto_now=False, auto_now_add=True)
     timestap = models.DateTimeField(auto_now=True, auto_now_add=False)
+    # user = models.OneToOneField(settings.AUTH_USER_MODEL, null=True, blank=True)
 
     def get_index(self):
         node = self
@@ -75,9 +77,16 @@ class Article(models.Model):
         markdown_content = markdown(content,'recipe')
         return mark_safe(markdown_content)
 
+    def get_absolute_url(self, *args, **kwargs):
+        return reverse("textcourse:course_detail", kwargs={"pk":self.pk, "pk1":self.course.pk})
+
     @property
     def index(self):
         return self.get_index()
+
+    @property
+    def is_root(self):
+        return False if self.parent else True
 
     class Meta:
         abstract = True

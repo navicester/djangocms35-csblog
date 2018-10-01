@@ -20,7 +20,7 @@ class MPTTArticleAdmin(MPTTModelAdmin):
     ]
 
     list_filter = [
-        'course'
+        'course',
     ]
 
     list_editable = ["active",]

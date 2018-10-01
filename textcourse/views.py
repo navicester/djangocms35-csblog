@@ -1,4 +1,5 @@
 from django.shortcuts import render, render_to_response
+from django.db.models import Q
 
 # Create your views here.
 from .models import MPTTArticle, Course
@@ -17,6 +18,7 @@ def course_detail(request, pk):
             'object': node,
             'article_root':article_root,
     })    
+
 
 def article_list(request):
     # nodes= MPTTArticle.objects.root_nodes()
@@ -44,4 +46,17 @@ def article_detail(request, pk1, pk):
     return render(request, 'article_detail.html', {
             'object': node,
             'nodes': nodes
-    })    
+    })
+
+def article_search_list(request):
+
+    q = request.GET.get('q', None)
+    print q
+    if q:
+        nodes= MPTTArticle.objects.all(is_superuser=request.user.is_superuser).filter(Q(title__icontains=q) | Q(content__icontains=q))
+    else:
+        nodes = MPTTArticle.objects.all(is_superuser=request.user.is_superuser)
+
+    return render(request, 'article_search_list.html', 
+        {'nodes': nodes, 'q':q})
+    
