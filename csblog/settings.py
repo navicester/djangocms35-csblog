@@ -84,6 +84,7 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'csblog', 'templates'),
                 os.path.join(BASE_DIR, 'templates'),
                 os.path.join(BASE_DIR, 'site-packages-update', 'djangocms_comments', 'templates'),
+                os.path.join(BASE_DIR, 'site-packages-update', 'tracking', 'templates'),
                 # os.path.join(BASE_DIR, 'env', 'Lib', 'site-packages', 'mptt', 'templates'),
                 ],
         'OPTIONS': {
@@ -173,6 +174,7 @@ INSTALLED_APPS = (
     # 'django_markwhat',    
     # 'cmsplugin_markdown', # Markdown-2.6.11 django-markwhat-1.6.0
 
+    'hitcount',
     'tracking',
     'tracking2',
     # 'crispy_forms',
@@ -327,3 +329,6 @@ MARKDOWN_DEUX_STYLES = {
 
     }
 }
+
+# needed for django-hitcount to function properly
+SESSION_SAVE_EVERY_REQUEST = True

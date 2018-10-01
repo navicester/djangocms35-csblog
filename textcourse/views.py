@@ -1,5 +1,7 @@
 from django.shortcuts import render, render_to_response
 from django.db.models import Q
+from hitcount.models import HitCount
+from hitcount.views import HitCountMixin
 
 # Create your views here.
 from .models import MPTTArticle, Course
@@ -42,10 +44,30 @@ def article_detail(request, pk1, pk):
     if articles:
         node= articles.get(pk=pk)
         nodes= articles
+
+    # first get the related HitCount object for your model object
+    hit_count = HitCount.objects.get_for_object(node)
+
+    # next, you can attempt to count a hit and get the response
+    # you need to pass it the request object as well
+    hit_count_response = HitCountMixin.hit_count(request, hit_count)
+
+    # print hit_count_response._asdict()
+
+    # your response could look like this:
+    # UpdateHitCountResponse(hit_counted=True, hit_message='Hit counted: session key')
+    # UpdateHitCountResponse(hit_counted=False, hit_message='Not counted: session key has active hit')
+
+    context = {
+            'object': node,
+            'nodes': nodes,
+    }
+
+    context.update(hit_count_response._asdict())
      
     return render(request, 'article_detail.html', {
             'object': node,
-            'nodes': nodes
+            'nodes': nodes,
     })
 
 def article_search_list(request):

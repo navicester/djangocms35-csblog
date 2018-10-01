@@ -1,5 +1,6 @@
 {% extends "textcourse_base.html" %}
 {% load staticfiles %}
+{% load hitcount_tags %}
 
 {% block header_css %}
 
@@ -35,9 +36,18 @@
         background-color: #eeeeee;
     }
 
+    .top-info{
+        color: grey;
+        font-size: smaller;
+    }
+
+    .top-info i{
+        padding-right: 30px; 
+    }
+
 </style>
 
-<div class="container-fluid">      
+<div class="container-fluid">  
     <div class="row">
         <div class="col-sm-3">
             <div class="sidebar list-group-item">
@@ -47,6 +57,12 @@
             </div>
         </div>
         <div class="col-sm-9">
+            <div class="top-info">
+                <h3>{{object.course}}</h3><br>
+                <i class="fa fa-eye"> {% get_hit_count for object %} 浏览</i>
+                <i class="fa fa-clock-o"> {{object.timestap|timesince}}</i>
+            </div>
+            <hr>
             {{object.get_markdown}}
         </div>
     </div>
