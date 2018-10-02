@@ -324,6 +324,7 @@ MARKDOWN_DEUX_STYLES = {
             "header-ids": None,
             # "fenced-code-blocks" : {'cssclass': 'mycodehilite', "prestyles":"background-color: #d2dee8;"},
             "fenced-code-blocks" : {'cssclass': 'mycodehilite',},
+            "tables": 'mytable',
         },
         "safe_mode": "escape",
 
