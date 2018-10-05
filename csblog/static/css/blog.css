@@ -47,3 +47,15 @@ blockquote{
     /*text-decoration: underline!important;*/
 }
 
+table p{
+    margin: 1px!important;
+}
+
+table tr{
+    border-bottom: 1px solid #eae3e3;
+}
+
+.container a, .container-fluid a{
+    word-wrap: break-word;
+}
+
