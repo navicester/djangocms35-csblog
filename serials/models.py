@@ -9,7 +9,7 @@ from filer.fields.image import FilerImageField
 class Serial(models.Model):
     title = models.CharField(_('title'), max_length=150, blank=False, null=False)
     abstract = models.TextField(_('abstract'), max_length=500, blank=True, null=True)
-    image = models.ImageField(_('image'), upload_to="upload/serial/", blank=True, null=True)
+    # image = models.ImageField(_('image'), upload_to="upload/serial/", blank=True, null=True)
     cover = FilerImageField(null=True, blank=True,
                            related_name="serial_cover")    
     order = models.IntegerField(_("order"), blank=True, null=True, default=-1)
