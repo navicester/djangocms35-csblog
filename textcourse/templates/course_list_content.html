@@ -1,6 +1,10 @@
+{% load thumbnail %}
+
     <div class="row">
         <div class="col-sm-6 push-sm-6">
-            <img src="{{object.image.url}}" class="img-fluid">
+            {# <img src="{{object.image.url}}" class="img-fluid"> #}
+            {# <img src="{{object.cover.url}}" class="img-fluid"> #}
+            <img src="{% thumbnail object.cover 250x250 crop %}" class="img-fluid">            
         </div>
 
         <div class="col-sm-6 pull-sm-6">
