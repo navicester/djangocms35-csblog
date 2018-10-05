@@ -33,7 +33,7 @@ class Entry(models.Model):
     serial = models.ForeignKey(Serial, verbose_name = _("serial"), blank=False, null=False)
     title = models.CharField(_('title'), max_length=150, blank=False, null=False)
     url = models.URLField(_('url'), max_length=100, blank=False, null=False)
-    image = models.ImageField(_('image'), upload_to="upload/serial/", blank=True, null=True)
+    # image = models.ImageField(_('image'), upload_to="upload/serial/", blank=True, null=True)
     img = FilerImageField(null=True, blank=True,
                            related_name="entry_img")
     order = models.IntegerField(_("order"), blank=True, null=True, default=-1)
