@@ -8,7 +8,7 @@ p.cms-plugin,
 }
 
 .post-content ul>li{
-    font-size: smaller;
+    /*font-size: smaller;*/
     /*font-style: italic;*/
 }
 p.cms-plugin img,
@@ -19,6 +19,14 @@ p.cms-plugin img,
 
 p {
     margin: 15px 0!important;
+}
+
+/*p.cms-plugin{
+    font-size: inherit;
+}*/
+
+body {
+    /*font-size: inherit;*/  /*1rem*/ /*overwrite clean-blog.css*/
 }
 
 h4, h5, h6{
@@ -39,7 +47,7 @@ blockquote{
 
 .container-fluid a, .container a{
     color: #2279d6;
-    font-size: smaller;
+    /*font-size: smaller;*/
 }
 
 .container-fluid a:hover, .container a:hover{
