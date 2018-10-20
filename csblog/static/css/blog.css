@@ -17,17 +17,6 @@ p.cms-plugin img,
     height: auto;
 }
 
-p {
-    margin: 15px 0!important;
-}
-
-/*p.cms-plugin{
-    font-size: inherit;
-}*/
-
-body {
-    /*font-size: inherit;*/  /*1rem*/ /*overwrite clean-blog.css*/
-}
 
 h4, h5, h6{
     margin: 30px 0!important;
@@ -42,17 +31,7 @@ h6{
 }
 
 blockquote{
-    font-size: smaller;
-}
-
-.container-fluid a, .container a{
-    color: #2279d6;
     /*font-size: smaller;*/
-}
-
-.container-fluid a:hover, .container a:hover{
-    color: #17a2b8;
-    /*text-decoration: underline!important;*/
 }
 
 table p{
@@ -63,8 +42,25 @@ table tr{
     border-bottom: 1px solid #eae3e3;
 }
 
+body .container, body .container-fluid {
+    font-size: 1rem/*inherit*/;  /*1rem*/ /*overwrite clean-blog.css*/
+}
+
+/*p*/
+.container p, .container-fluid p{
+    margin: 15px 0!important;
+}
+
+/*a*/
 .container a, .container-fluid a{
+    color: #2279d6;
+    /*font-size: smaller;*/
     word-wrap: break-word;
+}
+
+.container-fluid a:hover, .container a:hover{
+    color: #17a2b8;
+    /*text-decoration: underline!important;*/
 }
 
 /*table*/
