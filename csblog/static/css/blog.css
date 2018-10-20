@@ -32,6 +32,7 @@ h6{
 
 blockquote{
     /*font-size: smaller;*/
+    font-style: inherit;  /*to overwrite italic attribute in clean-block*/
 }
 
 table p{
