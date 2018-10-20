@@ -51,6 +51,7 @@ body .container, body .container-fluid {
 .container p, .container-fluid p{
     /*margin: 15px 0!important;*/
     margin: 15px 0;
+    line-height: 1.4;    
 }
 
 /*a*/
