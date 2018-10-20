@@ -43,6 +43,7 @@ table tr{
     border-bottom: 1px solid #eae3e3;
 }
 
+/*change font-size , line-head, margin, clean-blog css is very because for english, but too big for chinse, below attribute should be chagned together */
 body .container, body .container-fluid {
     font-size: /*14pt*/ /*1rem*/ inherit;  /*1rem*/ /*overwrite clean-blog.css*/
 }
