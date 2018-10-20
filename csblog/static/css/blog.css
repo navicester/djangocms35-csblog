@@ -59,6 +59,10 @@ body .container, body .container-fluid {
     word-wrap: break-word;
 }
 
+.post-content ul>li a{
+    font-size: inherit;
+}
+
 .container-fluid a:hover, .container a:hover{
     color: #17a2b8;
     /*text-decoration: underline!important;*/
