@@ -32,7 +32,7 @@ h6{
 
 blockquote{
     /*font-size: smaller;*/
-    font-style: inherit;  /*to overwrite italic attribute in clean-block*/
+    font-style: inherit;  /*to overwrite italic attribute in clean-blog*/  /*this style is beautiful for english but ugly for chinese*/
 }
 
 table p{
@@ -55,7 +55,7 @@ body .container, body .container-fluid {
 /*a*/
 .container a, .container-fluid a{
     color: #2279d6;
-    /*font-size: smaller;*/
+    font-size: smaller;
     word-wrap: break-word;
 }
 
