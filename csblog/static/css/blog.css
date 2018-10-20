@@ -43,7 +43,7 @@ table tr{
 }
 
 body .container, body .container-fluid {
-    font-size: 1rem/*inherit*/;  /*1rem*/ /*overwrite clean-blog.css*/
+    font-size: 14pt /*1rem*/ /*inherit*/;  /*1rem*/ /*overwrite clean-blog.css*/
 }
 
 /*p*/
