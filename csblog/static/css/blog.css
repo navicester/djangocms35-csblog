@@ -87,6 +87,8 @@ body .container, body .container-fluid {
 }
 
 .container table tbody tr td,
-.container-fluid table tbody tr td{
+.container table tbody tr td p,
+.container-fluid table tbody tr td,
+.container-fluid table tbody tr td p{
     padding: 0px 10px;
 }
