@@ -312,7 +312,7 @@ if DB_MYSQL:
             'USER': 'root'
         }
     }
-    
+
 MIGRATION_MODULES = {
     
 }
@@ -353,19 +353,19 @@ MARKDOWN_DEUX_STYLES = {
         "extras": {
             "code-friendly": None,
             "pyshell": None,
-            "demote-headers": 3,
+            "header-ids": None, # show id for header
+            "demote-headers": 2, # starting from 3
+            # "tag-friendly" : None, # for header
             "link-patterns": None,
             # `class` attribute put on `pre` tags to enable using
             # <http://code.google.com/p/google-code-prettify/> for syntax
             # highlighting.
             "html-classes": {"pre": "prettyprint"},
             "cuddled-lists": None,
-            "footnotes": None,
-            "header-ids": None,
+            "footnotes": None,            
             # "fenced-code-blocks" : {'cssclass': 'mycodehilite', "prestyles":"background-color: #d2dee8;"},
             "fenced-code-blocks" : {'cssclass': 'mycodehilite',},
-            "tables": 'mytable',
-            "tag-friendly" : None
+            "tables": 'mytable',            
         },
         "safe_mode": "escape",
 
