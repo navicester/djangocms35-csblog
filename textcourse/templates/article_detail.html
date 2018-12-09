@@ -45,7 +45,7 @@
         padding-right: 30px; 
     }
 
-    .h3-fake{
+    .fake-h3{
         font-weight: 800;
         font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
         font-size: 1.75rem;
@@ -70,8 +70,8 @@
         </div>
         <div class="col-sm-9">
             <div class="top-info">
-                <!-- <h3>{{object.course}}</h3><br> -->
-                <p class="h3-fake">{{object.course}}</p>
+                <!-- <h-3>{{object.course}}</h-3><br> -->
+                <p class="fake-h3">{{object.course}}</p>
                 <i class="fa fa-eye"> {% get_hit_count for object %} 浏览</i>
                 <i class="fa fa-clock-o"> {{object.timestap|timesince}}</i>
             </div>
