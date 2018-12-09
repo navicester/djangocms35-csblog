@@ -58,7 +58,7 @@
     }
 
 </style>
-{{object.get_markdown}}
+
 <div class="container-fluid">  
     <div class="row">
         <div class="col-sm-3">
@@ -70,8 +70,8 @@
         </div>
         <div class="col-sm-9">
             <div class="top-info">
-                <h1>{{object.course}}</h1><br>
-                <p class="fake-h3">{{object.course}}</p>
+                <h3>{{object.course}}</h3><br>
+                <!-- <p class="fake-h3">{{object.course}}</p> -->
                 <i class="fa fa-eye"> {% get_hit_count for object %} 浏览</i>
                 <i class="fa fa-clock-o"> {{object.timestap|timesince}}</i>
             </div>
@@ -83,5 +83,3 @@
 </div>
 
 {% endblock%}
-
-<!-- remove h3, markdown headline will start from h3+1 -->
