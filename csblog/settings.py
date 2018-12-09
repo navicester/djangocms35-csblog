@@ -354,7 +354,7 @@ MARKDOWN_DEUX_STYLES = {
             "code-friendly": None,
             "pyshell": None,
             "header-ids": None, # show id for header
-            "demote-headers": 2, # starting from 3
+            "demote-headers": 2, # (origin 3), # starting from 3
             # "tag-friendly" : None, # for header
             "link-patterns": None,
             # `class` attribute put on `pre` tags to enable using

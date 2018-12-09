@@ -45,18 +45,6 @@
         padding-right: 30px; 
     }
 
-    .fake-h3{
-        font-weight: 800;
-        font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-        font-size: 1.75rem;
-        line-height: 1.2;
-        color: inherit;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-    }
-
 </style>
 
 <div class="container-fluid">  
@@ -71,7 +59,6 @@
         <div class="col-sm-9">
             <div class="top-info">
                 <h3>{{object.course}}</h3><br>
-                <!-- <p class="fake-h3">{{object.course}}</p> -->
                 <i class="fa fa-eye"> {% get_hit_count for object %} 浏览</i>
                 <i class="fa fa-clock-o"> {{object.timestap|timesince}}</i>
             </div>
