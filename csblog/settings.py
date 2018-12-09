@@ -53,7 +53,8 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+# USE_TZ = True
+USE_TZ = False # otherwise admin will report error
 
 
 # Static files (CSS, JavaScript, Images)
@@ -273,6 +274,45 @@ DATABASES = {
     }
 }
 
+
+import socket
+import os
+
+db_server = os.getenv('DJANGO_SQL_SERVER')
+
+MEDIA_PREFIX = None
+
+DB_ORACLE = False
+DB_MYSQL = False
+DB_SQLITE = True
+
+if "Oracle" == db_server:
+    DB_ORACLE = True
+    MEDIA_PREFIX = "DB_ORACLE_" + socket.gethostname()
+elif "MySQL" == db_server: 
+    DB_MYSQL = True
+    MEDIA_PREFIX = "DB_SQL_" + socket.gethostname()   
+elif "SQLite" == db_server:    
+    DB_SQLITE = True
+    MEDIA_PREFIX = "DB_SQLITE"
+else:
+    DB_SQLITE = True
+    MEDIA_PREFIX = "DB_SQLITE"
+
+print "is DB_MYSQL ? {}".format(DB_MYSQL)
+if DB_MYSQL:
+    DATABASES = {
+        'default': {
+            'CONN_MAX_AGE': 0,
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': 'localhost',
+            'NAME': 'codingsoho',
+            'PASSWORD': '123',
+            'PORT': '',
+            'USER': 'root'
+        }
+    }
+    
 MIGRATION_MODULES = {
     
 }
@@ -334,3 +374,6 @@ MARKDOWN_DEUX_STYLES = {
 
 # needed for django-hitcount to function properly
 SESSION_SAVE_EVERY_REQUEST = True
+
+ALDRYN_NEWSBLOG_UPDATE_SEARCH_DATA_ON_SAVE = True
+ALDRYN_NEWSBLOG_SEARCH = True
