@@ -116,7 +116,7 @@ p.author-info{
         {% endif %}
 
         {% if not detail_view  %}
-        <p class="post-meta">Posted by {% include "aldryn_newsblog/includes/author.html" with author=article.author %} on {{ article.publishing_date|date:"F d, Y" }} </p>
+        <p class="post-meta">Posted by {% include "aldryn_newsblog/includes/author.html" with author=article.author %} on {{ article.publishing_date|date:"F d, Y" }} <i class="fa fa-eye" style="font-size: smaller;"> {% get_hit_count for article %} 浏览</i> </p>  
         {% endif %}
     </div>
 
