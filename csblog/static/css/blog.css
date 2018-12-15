@@ -40,7 +40,6 @@ h6{
 
 /*indent for ul*/
 body .container ul,
-body .content-course ol,
 body .container-fluid ul{
     padding-inline-start: 1rem;
 }
@@ -50,6 +49,9 @@ body .container-fluid  ul ul{
     padding-inline-start: 2rem;
 }
 
+body .content-course ol{
+    padding-inline-start: 1.5rem;
+}
 
 /*style for code block*/
 blockquote{
