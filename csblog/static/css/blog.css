@@ -40,7 +40,9 @@ h6{
 
 /*indent for ul*/
 body .container ul,
-body .container-fluid ul{
+body .container ol,
+body .container-fluid ul,
+body .container-fluid ol{
     padding-inline-start: 1rem;
 }
 
