@@ -23,6 +23,7 @@ h3, h4, h5, h6{
     margin: 30px 0!important;
 }
 
+/*remove indent for headline*/
 /*
 h4{
     margin-left: 15px!important;
@@ -37,33 +38,40 @@ h6{
 }
 */
 
+/*indent for ul*/
+.post-content ul{
+    padding-inline-start: 1rem;
+}
+
+.post-content  ul ul{
+    padding-inline-start: 2rem;
+}
+
+
+/*style for code block*/
 blockquote{
     /*font-size: smaller;*/
     font-style: inherit;  /*to overwrite italic attribute in clean-blog*/  /*this style is beautiful for english but ugly for chinese*/
 }
 
-table p{
-    margin: 1px!important;
-}
 
-table tr{
-    border-bottom: 1px solid #eae3e3;
-}
-
-/*change font-size , line-head, margin, clean-blog css is very because for english, but too big for chinse, below attribute should be chagned together */
-body .container, body .container-fluid {
+/*change font-size , line-head, margin, clean-blog css is very good because for english, but too big for chinse, below attribute should be chagned together */
+body .container, 
+body .container-fluid {
     font-size: 14pt /*1rem*/ /*inherit*/;  /*overwrite clean-blog.css*/
 }
 
 /*p*/
-.container p, .container-fluid p{
+.container p, 
+.container-fluid p{
     /*margin: 15px 0!important;*/
     margin: 15px 0;
     line-height: 1.4;    
 }
 
 /*a*/
-.container a, .container-fluid a{
+.container a, 
+.container-fluid a{
     color: #2279d6;
     font-size: smaller;
     word-wrap: break-word;
@@ -73,7 +81,8 @@ body .container, body .container-fluid {
     font-size: inherit;
 }
 
-.container-fluid a:hover, .container a:hover{
+.container-fluid a:hover, 
+.container a:hover{
     color: #17a2b8;
     /*text-decoration: underline!important;*/
 }
@@ -101,4 +110,12 @@ body .container, body .container-fluid {
 .container-fluid table tbody tr td,
 .container-fluid table tbody tr td p{
     padding: 0px 10px;
+}
+
+table p{
+    margin: 1px!important;
+}
+
+table tr{
+    border-bottom: 1px solid #eae3e3;
 }
