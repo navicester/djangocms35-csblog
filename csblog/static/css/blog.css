@@ -39,11 +39,13 @@ h6{
 */
 
 /*indent for ul*/
-.post-content ul{
+body .container ul,
+body .container-fluid ul{
     padding-inline-start: 1rem;
 }
 
-.post-content  ul ul{
+body .container  ul ul,
+body .container-fluid  ul ul{
     padding-inline-start: 2rem;
 }
 
