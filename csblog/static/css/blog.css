@@ -38,6 +38,7 @@ h6{
 }
 */
 
+
 /*indent for ul*/
 body .container ul,
 body .container-fluid ul{
@@ -57,6 +58,10 @@ body .content-course ol{
 blockquote{
     /*font-size: smaller;*/
     font-style: inherit;  /*to overwrite italic attribute in clean-blog*/  /*this style is beautiful for english but ugly for chinese*/
+
+    border-left: .25em solid #dfe2e5;
+    color: #6a737d;
+    padding: 0 1em;
 }
 
 
