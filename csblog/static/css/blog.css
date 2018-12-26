@@ -54,6 +54,14 @@ body .content-course ol{
     padding-inline-start: 1.5rem;
 }
 
+/*code*/
+
+code{
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
 /*style for code block*/
 blockquote{
     /*font-size: smaller;*/
