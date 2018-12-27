@@ -50,7 +50,7 @@ body .container-fluid  ul ul{
     padding-inline-start: 2rem;
 }
 
-body .content-course ol{
+body .article-content ol{
     padding-inline-start: 1.5rem;
 }
 
@@ -79,9 +79,26 @@ pre.prettyprint {
 }
 
 /*change font-size , line-head, margin, clean-blog css is very good because for english, but too big for chinse, below attribute should be chagned together */
-body .container, 
-body .container-fluid {
-    font-size: 14pt /*1rem*/ /*inherit*/;  /*overwrite clean-blog.css*/
+
+/*overwrite clean-blog.css*/
+
+body .container
+{    
+    /*font-size: inherit;*/
+    /*font-size: 1rem;*/
+    font-size: 14pt;
+    
+}
+
+/*liujiangblog*/
+body .container-fluid .content-nav-bar{
+    font-size: 18px;
+}
+
+/*liujiangblog*/
+body .container-fluid .article-content{
+    font-size: 16px; 
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 /*p*/

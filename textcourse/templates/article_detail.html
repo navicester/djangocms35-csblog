@@ -47,7 +47,7 @@
 
 </style>
 
-<div class="container-fluid">  
+<div class="container-fluid article-body">  
     <div class="row">
         <div class="col-sm-3 content-nav-bar">
             <div class="sidebar list-group-item">
@@ -56,7 +56,7 @@
                 {% include "mptt.html" %}
             </div>
         </div>
-        <div class="col-sm-9 content-course">
+        <div class="col-sm-9 article-content">
             <div class="top-info">
                 <h3 style="margin:0px!important;">{{object.course}}</h3><br>
                 <i class="fa fa-eye"> {% get_hit_count for object %} 浏览</i>
