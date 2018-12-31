@@ -108,9 +108,11 @@ p.author-info{
                 {% if article.featured_image_id %}<img src="{% thumbnail article.featured_image 80x60 crop subject_location=article.featured_image.subject_location %}" alt="{{ article.featured_image.alt }}">{% endif %} 
                 {% render_model article "lead_in" "" "" "truncatechars:'30'|striptags" %} # if there's format in lead, truncatechars will bring html breakage
                 {% endcomment %}
+                {% if article.featured_image %}
                 <p class="featured-image">
                     <img src="{% thumbnail article.featured_image 800x450 crop subject_location=article.featured_image.subject_location %}" alt="{{ article.featured_image.alt }}">
-                </p>           
+                </p>
+                {% endif %}
                 {% render_model article "lead_in" %} 
             {% else %}
                 {% render_model article "lead_in" %}
