@@ -113,8 +113,11 @@ body .container-fluid .article-content{
 .container a, 
 .container-fluid a{
     color: #2279d6;
-    font-size: smaller;
     word-wrap: break-word;
+}
+
+.container a{
+    font-size: smaller;
 }
 
 .post-content ul>li a{
