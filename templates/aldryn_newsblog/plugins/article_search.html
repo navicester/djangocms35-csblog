@@ -19,6 +19,7 @@
         <div class="input-group">
           <input type="text" name="q" id="search-plugin-{{ instance.pk }}" class="form-control" placeholder="{% trans "Search for article ..." %}" required>
           <span class="input-group-btn">
+            <input type="hidden" name="max_articles" value="{{ instance.max_articles }}">
             <button class="btn btn-default" type="submit">Go!</button>
           </span>
         </div><!-- /input-group -->

@@ -2,6 +2,20 @@
 {% load i18n apphooks_config_tags %}
 {% load cms_tags %}
 
+<style type="text/css">
+{% block style %}
+{{block.super}}
+.category-item-list{
+    background-color: #dc3545;
+    border-radius: 2px;
+    padding: 1px;
+    margin: 0px;
+    color: white;
+    line-height: 1.5;
+}
+{% endblock %}
+</style>
+
 {% block newsblog_content %}
     {% comment %}
     <ul>
@@ -35,7 +49,7 @@
             <h3 class="post-title">
                 <strong>
                     {% for category in article.categories.all %}
-                        {{ category.name }}{% if not forloop.last %}, {% endif %}
+                        <span class="category-item-list">{{ category.name }}</span>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                 </strong>
                 {% render_model article "title" %}
