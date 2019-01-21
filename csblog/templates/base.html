@@ -34,12 +34,14 @@
     {% render_block "css" %}
     {{ALDRYN_SNAME.render_head}}
 
-    <!-- django CMS toolbar adjustment -->
-    {% if request.toolbar %}
+    
     <style type="text/css">
+    {% if request.toolbar.show_toolbar %}
+        <!-- django CMS toolbar adjustment -->
         #mainNav{
             margin-top: 45px;
         }
+    {% endif %}
 
     @media only screen and (min-width: 992px){
         #mainNav .navbar-nav>li.child>a {
@@ -77,7 +79,6 @@
     }
         
     </style>
-    {% endif %}    
 
   </head>
 
