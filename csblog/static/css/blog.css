@@ -133,13 +133,18 @@ body .container-fluid .article-content{
 /*table*/
 .container table thead tr, 
 .container-fluid table thead tr{
-    background-color: #2279d663;
+    background-color: #007bff;
     color: white;
 }
 
 .container table tbody tr:nth-child(2n),
 .container-fluid table tbody tr:nth-child(2n){
     background-color: #e9ecef;
+}
+
+.container table code,
+.container-fluid table code{
+    background-color: inherit;
 }
 
 .container table thead tr th, 
