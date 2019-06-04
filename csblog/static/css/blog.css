@@ -54,6 +54,10 @@ body .article-content ol{
     padding-inline-start: 1.5rem;
 }
 
+body .container .content ol{
+    padding-inline-start: 1.5rem;
+}
+
 /*code*/
 
 code{
