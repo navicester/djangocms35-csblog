@@ -55,7 +55,7 @@ body .article-content ol{
 }
 
 body .container .content ol{
-    padding-inline-start: 1.5rem;
+    border-left: .25em solid #dee2e6;
 }
 
 /*code*/
