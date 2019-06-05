@@ -50,10 +50,7 @@ body .container-fluid  ul ul{
     padding-inline-start: 2rem;
 }
 
-body .article-content ol{
-    padding-inline-start: 1.5rem;
-}
-
+body .container-fluid .article-content ol,
 body .container .content ol{
     padding-inline-start: 1.5rem;
 }
@@ -70,11 +67,9 @@ code{
 blockquote{
     /*font-size: smaller;*/
     font-style: inherit;  /*to overwrite italic attribute in clean-blog*/  /*this style is beautiful for english but ugly for chinese*/
-
     border-left: .25em solid #dfe2e5;
     color: #6a737d;
     padding: 0 1em;
-
     margin: 0px 0px 16px 0px;
 }
 
@@ -104,17 +99,17 @@ body .container-fluid .content-nav-bar{
 }
 
 /*liujiangblog*/
-body .container-fluid .article-content{
+body .container-fluid .article-content,
+body .container .content{
     font-size: 16px; 
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
 /*p*/
 .container p, 
 .container-fluid p{
-    /*margin: 15px 0!important;*/
     margin: 15px 0;
-    line-height: 1.4;    
+    line-height: 1.5;    
 }
 
 /*a*/
@@ -124,8 +119,10 @@ body .container-fluid .article-content{
     word-wrap: break-word;
 }
 
-.container a{
-    font-size: smaller;
+.container .post-preview a{
+    /*font-size: smaller;*/
+    font-size: 15px;
+    font-family: Lora,'Times New Roman',serif;
 }
 
 .post-content ul>li a{
