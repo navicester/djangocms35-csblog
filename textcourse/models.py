@@ -133,4 +133,33 @@ class MPTTArticle(MPTTModel, Article):
     def  __str__(self):
         return "{} - {}".format(self.get_index(), self.title)
 
+    @property
+    def previous(self):
+        try:
+            if self.get_previous_sibling():
+                if self.get_previous_sibling().get_children():
+                    return self.get_previous_sibling().get_children().last()
+                else:
+                    return self.get_previous_sibling()
+            elif self.parent:
+                return self.parent
+        except:
+            pass
+
+        return None
+
+    @property
+    def next(self):
+        try:
+            if self.get_children():
+                return self.get_children().first()
+            elif not self.get_next_sibling():
+                return self.parent.get_next_sibling()
+            else:
+                return self.get_next_sibling()
+        except:
+            pass
+
+        return None    
+
     objects = ArticleManager()

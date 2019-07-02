@@ -45,6 +45,12 @@
         padding-right: 30px; 
     }
 
+    @media only screen and (max-width: 767px){
+        .content-nav-bar {
+            display: none;
+        }
+    }    
+
 </style>
 
 <div class="container-fluid article-body">  
@@ -67,6 +73,15 @@
             {{object.get_markdown}}
         </div>
     </div>
+    <br>
+    <div class="text-center pull-right">
+        <ul class="pagination">            
+            <li class="page-item {% if not object.previous %}disabled{% endif %}"><a class="page-link" href="{{object.previous.get_absolute_url}}">上一篇</a></li>            
+            <li class="page-item"><a class="page-link" href="{{object.course.get_absolute_url}}">回到目录</a></li>            
+            <li class="page-item {% if not object.next %}disabled{% endif %}"><a class="page-link" href="{{object.next.get_absolute_url}}">下一篇</a></li>            
+        </ul>
+    </div>
+    <br>
 </div>
 
 {% endblock%}
