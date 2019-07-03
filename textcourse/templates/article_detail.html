@@ -64,19 +64,15 @@
         </div>
         <div class="col-sm-9 article-content">
             <div class="top-info">
-                <h3 style="margin:0px!important;">{{object.course}}</h3><br>
+                <h3 style="margin:0px!important;">{{object.course}}</h3><br>                
                 <i class="fa fa-eye"> {% get_hit_count for object %} 浏览</i>
                 <i class="fa fa-clock-o"> {{object.timestap|timesince}}</i>
             </div>
-            <hr>
-            <p><b>{{object.title}} </b></p>
-            版权声明: 转载请注明出处 <a href="http://www.codingsoho.com/">http://www.codingsoho.com/</a> 
+            <hr>       
+            <p><b>{{object.index}} {{object.title}}</b></p>     
+            版权声明: 转载请注明出处 <a href="http://www.codingsoho.com/">http://www.codingsoho.com/</a>             
 
             {{object.get_markdown}}
-
-            current: {{object.get_absolute_url}} <br>
-            previous: {{object.previous.get_absolute_url}} {{object.previous.order}} {{object.previous.pk}}<br>
-            next: {{object.next.get_absolute_url}} {{object.next.order}} {{object.next.pk}}
 
             <div class="row">
                 <div class="col-sm-12">
