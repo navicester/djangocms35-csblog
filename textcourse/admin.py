@@ -17,6 +17,7 @@ class MPTTArticleAdmin(MPTTModelAdmin):
         'order',
         'course',
         'active',
+        "id"
     ]
 
     list_filter = [

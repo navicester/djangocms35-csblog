@@ -133,16 +133,40 @@ class MPTTArticle(MPTTModel, Article):
     def  __str__(self):
         return "{} - {}".format(self.get_index(), self.title)
 
+    def get_next_by_order(self):
+        field = self.__class__._meta.get_field('order')        
+        try:
+            return self._get_next_or_previous_by_FIELD(field, is_next=True, parent=None, course=self.course)
+        except MPTTArticle.DoesNotExist:
+            return None
+
+    def get_previous_by_order(self):
+        field = self.__class__._meta.get_field('order')
+        try:
+            return self._get_next_or_previous_by_FIELD(field, is_next=False, parent=None, course=self.course)
+        except MPTTArticle.DoesNotExist:
+            return None
+
     @property
     def previous(self):
         try:
-            if self.get_previous_sibling():
-                if self.get_previous_sibling().get_children():
-                    return self.get_previous_sibling().get_children().last()
+            if self.is_root_node():
+                node = self.get_previous_by_order()
+                if node:
+                    if node.get_children():
+                        return node.get_children().last()
+                    else:
+                        return node
+            else:
+                if self.get_previous_sibling():
+                    if self.get_previous_sibling().get_children():
+                        return self.get_previous_sibling().get_children().last()
+                    else:
+                        return self.get_previous_sibling()
+                elif self.parent:
+                    return self.parent
                 else:
-                    return self.get_previous_sibling()
-            elif self.parent:
-                return self.parent
+                    pass
         except:
             pass
 
@@ -151,12 +175,21 @@ class MPTTArticle(MPTTModel, Article):
     @property
     def next(self):
         try:
-            if self.get_children():
-                return self.get_children().first()
-            elif not self.get_next_sibling():
-                return self.parent.get_next_sibling()
+            if self.is_root_node():
+                if self.get_children():
+                    return self.get_children().first()
+                else:
+                    return self.get_next_by_order()      
             else:
-                return self.get_next_sibling()
+                if self.get_children():
+                    return self.get_children().first()
+                elif not self.get_next_sibling():
+                    if self.parent.is_root_node():
+                        return self.parent.get_next_by_order()
+                    else:
+                        return self.parent.get_next_sibling()
+                else:
+                    return self.get_next_sibling()
         except:
             pass
 
