@@ -102,6 +102,7 @@ class ArticleUpdateView(StaffRequiredMixin, UpdateViewMixin, UpdateView):
 
         form = self.get_form()
         form.fields['course'].widget.attrs['readonly'] = True
+        form.fields['parent'].choices = get_article_choice(self.get_object().course)
         # form.fields['course'].widget.attrs['disabled'] = True
         context["form"] = form
 
