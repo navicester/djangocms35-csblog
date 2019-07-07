@@ -129,7 +129,7 @@ class ArticleCreateView(StaffRequiredMixin, CreateViewMixin, CreateView):
         # form_class = ArticleForm
         form = form_class( self.request.GET or None, 
             initial= {
-                'course': self.get_object().course,
+                'course': course,
                 })
         form.fields['course'].widget.attrs['readonly'] = True
         # form.fields['parent'].queryset = MPTTArticle.objects.filter(course=self.get_object().course)
