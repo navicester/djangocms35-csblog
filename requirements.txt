@@ -34,3 +34,5 @@ pygments==2.2.0
 django-hitcount==1.3.0
 
 codingsoho-tracking==0.4.1
+codingsoho-plugin==1.0.0
+django-crispy-forms==1.6.0

@@ -14,7 +14,7 @@ class ArticleForm(forms.ModelForm):
         #     print _
 
         course = None
-        instance = getattr(self, 'instance', None)
+        instance = getattr(self, 'instance', None)        
 
         if instance and hasattr(instance, 'course'):
             course = instance.course

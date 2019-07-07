@@ -1,6 +1,6 @@
 
 {% extends "textcourse_base.html" %}
-{% load staticfiles %}
+{% load staticfiles i18n %}
 
 {% block content %}
 
@@ -22,7 +22,10 @@
     <br>  
 </form>
 
-
 {% include "course_list_content.html" with show_entry_list=True article_root=article_root %}
-            
+
+<br>
+{% if request.user.is_staff %}
+<a href='{% url "textcourse:article_create" pk=object.pk%}'><i class="fa fa-plus-square-o" aria-hidden="true"> {% trans "Create" %}</i></a> {% endif %}
+
 {% endblock %}

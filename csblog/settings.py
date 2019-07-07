@@ -143,6 +143,8 @@ INSTALLED_APPS = (
     'csblog',
     'serials',
     'textcourse',
+    'plugin',
+    'crispy_forms',
 
     'mptt',   
     
@@ -377,3 +379,6 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 ALDRYN_NEWSBLOG_UPDATE_SEARCH_DATA_ON_SAVE = True
 ALDRYN_NEWSBLOG_SEARCH = True
+
+#Crispy FORM TAGs SETTINGS
+CRISPY_TEMPLATE_PACK = 'bootstrap3'

@@ -10,6 +10,8 @@ from django.utils.safestring import mark_safe
 # from django.conf import settings
 from filer.fields.image import FilerImageField
 
+BLANK_CHOICE_DASH = [("", "---------")]
+
 # Create your models here.
 
 class CourseQuerySet(models.query.QuerySet):
@@ -127,6 +129,26 @@ class MPTTArticle(MPTTModel, Article):
             course_pk = self.course.pk
         return reverse("textcourse:article_detail", kwargs={"pk1": course_pk, "pk": self.pk})    
 
+    def get_absolute_url_list(self):
+        course_pk = None
+        if hasattr(self, 'course') and self.course and self.course.pk:
+            course_pk = self.course.pk
+            return reverse("textcourse:course_detail", kwargs={"pk": course_pk})
+        else:
+            return reverse("textcourse:course_list", kwargs={})
+
+    def get_absolute_url_update(self):
+        course_pk = None
+        if self.course and self.course.pk:
+            course_pk = self.course.pk
+        return reverse("textcourse:article_update", kwargs={"pk1": course_pk, "pk": self.pk})  
+
+    def get_absolute_url_delete(self):
+        course_pk = None
+        if self.course and self.course.pk:
+            course_pk = self.course.pk
+        return reverse("textcourse:article_delete", kwargs={"pk1": course_pk, "pk": self.pk}) 
+
     def  __unicode__(self):
         return "{} - {}".format(self.get_index(), self.title)
 
@@ -196,3 +218,12 @@ class MPTTArticle(MPTTModel, Article):
         return None    
 
     objects = ArticleManager()
+
+def get_article_choice(course):
+    CHOICE_LIST = []
+    for ins in MPTTArticle.objects.filter(course=course): #course.article_set.all():
+        if not (ins, ins) in CHOICE_LIST:
+            CHOICE_LIST.append((ins.id, ins))
+    # CHOICE_LIST.sort()
+    CHOICE_LIST.insert(0, ('', '----'))  
+    return CHOICE_LIST    

@@ -1,10 +1,15 @@
 from django.shortcuts import render, render_to_response
 from django.db.models import Q
+from django.core.urlresolvers import reverse
 from hitcount.models import HitCount
 from hitcount.views import HitCountMixin
 
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
+from plugin.mixins import StaffRequiredMixin, TableListViewMixin, TableDetailViewMixin, UpdateViewMixin, CreateViewMixin, DeleteViewMixin
+
 # Create your views here.
-from .models import MPTTArticle, Course
+from .models import MPTTArticle, Course, get_article_choice
+from .forms import ArticleForm
 
 def course_list(request):
     object_list= Course.objects.all(is_superuser=request.user.is_superuser)
@@ -81,4 +86,54 @@ def article_search_list(request):
 
     return render(request, 'article_search_list.html', 
         {'nodes': nodes, 'q':q})
-    
+
+class ArticleUpdateView(StaffRequiredMixin, UpdateViewMixin, UpdateView): 
+    model = MPTTArticle   
+    show_breadcrumbs = False
+    exclude = [
+            'updated'
+    ] 
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ArticleUpdateView, self).get_context_data(*args, **kwargs)
+        context.update({
+            'col_css' : 'col-sm-12'
+        })
+
+        form = self.get_form()
+        form.fields['course'].widget.attrs['readonly'] = True
+        # form.fields['course'].widget.attrs['disabled'] = True
+        context["form"] = form
+
+        return context
+
+class ArticleDeleteView(StaffRequiredMixin, DeleteViewMixin, DeleteView): 
+    model = MPTTArticle   
+    show_breadcrumbs = False       
+
+class ArticleCreateView(StaffRequiredMixin, CreateViewMixin, CreateView): 
+    model = MPTTArticle   
+    show_breadcrumbs = False
+
+    def get_success_url(self, *args, **kwargs):
+        course_pk = self.kwargs.get('pk', None)
+        return reverse("textcourse:course_detail", kwargs={"pk": course_pk})  
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ArticleCreateView, self).get_context_data(*args, **kwargs)
+        
+        course_pk = self.kwargs.get('pk', None)
+        course = Course.objects.get(pk=course_pk)
+
+        form_class = self.get_form_class()
+        # form_class = ArticleForm
+        form = form_class( self.request.GET or None, 
+            initial= {
+                'course': self.get_object().course,
+                })
+        form.fields['course'].widget.attrs['readonly'] = True
+        # form.fields['parent'].queryset = MPTTArticle.objects.filter(course=self.get_object().course)
+        form.fields['parent'].choices = get_article_choice(course)
+        context["form"] = form
+
+        return context       

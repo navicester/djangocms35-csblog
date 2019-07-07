@@ -1,6 +1,7 @@
 {% extends "textcourse_base.html" %}
 {% load staticfiles %}
 {% load hitcount_tags %}
+{% load i18n %}
 
 {% block header_css %}
 
@@ -73,6 +74,10 @@
             版权声明: 转载请注明出处 <a href="http://www.codingsoho.com/">http://www.codingsoho.com/</a>             
 
             {{object.get_markdown}}
+
+            {% if object.get_absolute_url_update and request.user.is_staff %}<a href="{{ object.get_absolute_url_update }}" class="btn btn-primary" style="color: white;" >{% trans "Update" %}</a>{% endif %}
+
+            {% if object.get_absolute_url_delete and request.user.is_staff %}<a href="{{ object.get_absolute_url_delete }}" class="btn btn-primary" style="color: white;" >{% trans "Delete" %}</a>{% endif %}
 
             <div class="row">
                 <div class="col-sm-12">
