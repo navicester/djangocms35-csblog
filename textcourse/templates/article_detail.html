@@ -79,7 +79,7 @@
 
             {% if object.get_absolute_url_delete and request.user.is_staff %}<a href="{{ object.get_absolute_url_delete }}" class="btn btn-primary" style="color: white;" >{% trans "Delete" %}</a>{% endif %}
 
-            {% if request.user.is_staff %}<a href='{% url "textcourse:article_create" pk=object.course.pk%}'class="btn btn-primary" style="color: white;" > {% trans "Create" %}x`</a> {% endif %}
+            {% if request.user.is_staff %}<a href='{% url "textcourse:article_create" pk=object.course.pk%}'class="btn btn-primary" style="color: white;" > {% trans "Create" %}</a> {% endif %}
 
 
             <div class="row">
