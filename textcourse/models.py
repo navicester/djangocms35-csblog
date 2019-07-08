@@ -103,12 +103,14 @@ class ArticleManager(models.Manager):
 
     def root(self, *args, **kwargs):
         try:
-            return self.all().filter(parent=None)
+            return self.all(*args, **kwargs).filter(parent=None)
         except:
             return None
 
     def all(self, *args, **kwargs):
+        print kwargs
         is_superuser = kwargs.get('is_superuser', None)
+        print is_superuser
         if not is_superuser:        
             return self.get_queryset().filter(active=True)
         return self.get_queryset()
@@ -170,7 +172,7 @@ class MPTTArticle(MPTTModel, Article):
             return None
 
     @property
-    def previous(self):
+    def previous(self):  # need to filter the not active items
         try:
             if self.is_root_node():
                 node = self.get_previous_by_order()

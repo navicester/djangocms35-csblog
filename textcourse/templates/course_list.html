@@ -2,10 +2,27 @@
 {% load staticfiles i18n %}
 {% load pagination_tags %}
 
-<style>
+<style type="text/css">
+
 {% block style %}
 {{block.super}}
+.img-center { 
+    /*display:table-cell;*/
+    vertical-align:middle;
+    text-align:center;
+    height: 150px;
+    line-height: 150px; /*very important for center*/
+    border: solid 1px #e7e7eb; 
+}
 
+.img-center img.img-responsive{ 
+    /*height: 100px!important;
+    width: auto!important;
+    max-width: 100%!important;*/
+    max-height: 100%!important;
+    vertical-align: middle!important;
+    display: inline-block!important;  /*very important for IE display */ 
+}
 {% endblock %}
 </style>
 
@@ -16,22 +33,46 @@
 
     {% include "search.html" %}
     
-    {% autopaginate object_list 10 %}
+    {% autopaginate object_list 12 %}
+
+    <div class="row"> 
+        {% for obj in object_list %}
+        <div class="col-xs-12 col-sm-3 " style="margin-top: 5px;">
+            <div class="thumbnail text-center">     
+                <a href="{{obj.get_absolute_url}}"><div class="img-center"><img id="img" class="img-fluid" src="{% if obj.cover.url %}{{obj.cover.url}}{% else %}/media/filer_public/a3/01/a301eaf8-aaf9-4515-bbf0-24cb7b902903/33-foreignkey-1.png{% endif %}"></div></a><br> 
+                <small><span class="abstract">{{obj.abstract}}</span></small><br>
+                <a type="button" class="btn btn-primary display_single" style="float:left;padding:4px 12px; margin-left: 10px; margin-top:5px;" href="{{obj.get_absolute_url}}">查看</a>
+            </div>
+        </div>
+        <!-- <div class='col-sm-2 col-md-3 text-center'> 
+            <div class="thumbnail">
+              <img src="{% if obj.cover.url %}{{obj.cover.url}}{% else %}{% endif %}" alt="{{obj.cover}}" style="max-width: 100%;">
+              <div class="caption">
+                <h3>{{obj.course}}</h3>
+                <p>{{obj.course.abstract}}</p>
+                <p><a href="{{obj.get_absolute_url}}" class="btn btn-primary" role="button">View</a> </p>
+              </div>
+            </div>
+        </div> -->
+        {% cycle '' '' ''  '</div><div class="row" style="margin-top: 30px;">'%}
+        {% endfor %} </div>
+
+    {% comment %}
     {% for obj in object_list %}
+        
         {% include "serial_list_content.html" with object=obj show_entry_list=False %}
         <div class="row" style="padding-top: 20px;">
             <div class="col-sm-12">
                 <div class="text-center"><a href="{{obj.get_absolute_url}}" class="btn btn-primary btn-lg">{% trans "View Serial" %}</a></div>
             </div>
         </div>
-
         <br>
         <br>
         {% if not forloop.last %}
         <hr>
         {% endif %}
-
     {% endfor %}
+    {% endcomment %}
 
     <div class="text-center">
         {% paginate %}

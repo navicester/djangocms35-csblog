@@ -136,5 +136,8 @@ class ArticleCreateView(StaffRequiredMixin, CreateViewMixin, CreateView):
         # form.fields['parent'].queryset = MPTTArticle.objects.filter(course=self.get_object().course)
         form.fields['parent'].choices = get_article_choice(course)
         context["form"] = form
+        context.update({
+            'col_css' : 'col-sm-12'
+        })
 
         return context       

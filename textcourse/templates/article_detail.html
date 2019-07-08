@@ -57,7 +57,7 @@
 <div class="container-fluid article-body">  
     <div class="row">
         <div class="col-sm-3 content-nav-bar">
-            <div class="sidebar list-group-item">
+            <div id="sidebar-article" class="sidebar list-group-item" style="overflow-x:auto; max-height: 600px;">
                 <span>Contents:</span>
                 <hr>
                 {% include "mptt.html" %}
@@ -79,6 +79,9 @@
 
             {% if object.get_absolute_url_delete and request.user.is_staff %}<a href="{{ object.get_absolute_url_delete }}" class="btn btn-primary" style="color: white;" >{% trans "Delete" %}</a>{% endif %}
 
+            {% if request.user.is_staff %}<a href='{% url "textcourse:article_create" pk=object.course.pk%}'class="btn btn-primary" style="color: white;" > {% trans "Create" %}x`</a> {% endif %}
+
+
             <div class="row">
                 <div class="col-sm-12">
                     <br>
@@ -98,3 +101,34 @@
 </div>
 
 {% endblock%}
+
+
+<!--让左边目录栏跟随滚动-->
+<script type="text/javascript">
+{% block js %}
+    var documentHeight = 0;
+    var topPadding = 60;
+    $(function() {
+        var el = $("#sidebar-article");
+        var offset = el.offset();
+        documentHeight = $(document).height();
+        $(window).scroll(function() {
+            var sideBarHeight = el.height();
+            if ($(window).scrollTop() > offset.top) {
+                var newPosition = ($(window).scrollTop() - offset.top) + topPadding;
+                var maxPosition = documentHeight - (sideBarHeight);
+                if (newPosition > maxPosition) {
+                    newPosition = maxPosition;
+                }
+                el.stop().animate({
+                    marginTop: newPosition
+                });
+            } else {
+                el.stop().animate({
+                    marginTop: 0
+                });
+            }
+        });
+    });
+{% endblock %}                
+</script>

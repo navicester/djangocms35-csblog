@@ -11,6 +11,8 @@ p.cms-plugin,
     /*font-size: smaller;*/
     /*font-style: italic;*/
 }
+
+body .container-fluid img,
 p.cms-plugin img,
 .post-content p img {
     max-width: 100%;
