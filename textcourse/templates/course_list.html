@@ -40,7 +40,7 @@
         <div class="col-xs-12 col-sm-3 " style="margin-top: 5px;">
             <div class="thumbnail text-center">     
                 <a href="{{obj.get_absolute_url}}"><div class="img-center"><img id="img" class="img-fluid" src="{% if obj.cover.url %}{{obj.cover.url}}{% else %}/media/filer_public/a3/01/a301eaf8-aaf9-4515-bbf0-24cb7b902903/33-foreignkey-1.png{% endif %}"></div></a><br> 
-                <small><span class="abstract">{{obj.abstract}}</span></small><br>
+                <small><span class="abstract">{{obj.abstract|truncatechars:10}}</span></small><br>
                 <a type="button" class="btn btn-primary display_single" style="float:left;padding:4px 12px; margin-left: 10px; margin-top:5px;" href="{{obj.get_absolute_url}}">查看</a>
             </div>
         </div>
