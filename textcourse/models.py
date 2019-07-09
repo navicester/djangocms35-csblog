@@ -158,30 +158,22 @@ class MPTTArticle(MPTTModel, Article):
     def get_next_by_order(self, *args, **kwargs):
         field = self.__class__._meta.get_field('order')        
         try:
-            is_superuser = kwargs.get('is_superuser', None)
-            if is_superuser:
-                return self._get_next_or_previous_by_FIELD(field, is_next=True, parent=None, course=self.course)
-            else:
-                return self._get_next_or_previous_by_FIELD(field, is_next=True, parent=None, course=self.course, active=True)
+            return self._get_next_or_previous_by_FIELD(field, is_next=True, parent=None, course=self.course)
         except MPTTArticle.DoesNotExist:
             return None
 
     def get_previous_by_order(self, *args, **kwargs):
         field = self.__class__._meta.get_field('order')
         try:
-            is_superuser = kwargs.get('is_superuser', None)
-            if is_superuser:
-                return self._get_next_or_previous_by_FIELD(field, is_next=False, parent=None, course=self.course)
-            else:
-                return self._get_next_or_previous_by_FIELD(field, is_next=False, parent=None, course=self.course, active=True)
+            return self._get_next_or_previous_by_FIELD(field, is_next=False, parent=None, course=self.course)
         except MPTTArticle.DoesNotExist:
             return None
 
     @property
-    def previous(self, *args, **kwargs):  # need to filter the not active items
+    def previous(self): 
         try:
             if self.is_root_node():
-                node = self.get_previous_by_order(*args, **kwargs)
+                node = self.get_previous_by_order()
                 if node:
                     if node.get_children():
                         return node.get_children().last()
@@ -203,19 +195,20 @@ class MPTTArticle(MPTTModel, Article):
         return None
 
     @property
-    def next(self, *args, **kwargs):
+    def next(self):        
         try:
             if self.is_root_node():
+
                 if self.get_children():
                     return self.get_children().first()
                 else:
-                    return self.get_next_by_order(*args, **kwargs)      
+                    return self.get_next_by_order()      
             else:
                 if self.get_children():
                     return self.get_children().first()
                 elif not self.get_next_sibling():
                     if self.parent.is_root_node():
-                        return self.parent.get_next_by_order(*args, **kwargs)
+                        return self.parent.get_next_by_order()
                     else:
                         return self.parent.get_next_sibling()
                 else:
