@@ -22,7 +22,7 @@ class CourseManager(models.Manager):
     def get_queryset(self):
         return CourseQuerySet(self.model, using=self._db)
 
-    def all(self, *args, **kwargs):
+    def active(self, *args, **kwargs):
         is_superuser = kwargs.get('is_superuser', None)
         if not is_superuser:
             return self.get_queryset().active()
@@ -103,14 +103,12 @@ class ArticleManager(models.Manager):
 
     def root(self, *args, **kwargs):
         try:
-            return self.all(*args, **kwargs).filter(parent=None)
+            return self.active(*args, **kwargs).filter(parent=None)
         except:
             return None
 
-    def all(self, *args, **kwargs):
-        print kwargs
+    def active(self, *args, **kwargs):
         is_superuser = kwargs.get('is_superuser', None)
-        print is_superuser
         if not is_superuser:        
             return self.get_queryset().filter(active=True)
         return self.get_queryset()

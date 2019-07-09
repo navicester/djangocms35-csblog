@@ -12,7 +12,7 @@ from .models import MPTTArticle, Course, get_article_choice
 from .forms import ArticleForm
 
 def course_list(request):
-    object_list= Course.objects.all(is_superuser=request.user.is_superuser)
+    object_list= Course.objects.active(is_superuser=request.user.is_superuser)
      
     return render(request, 'course_list.html', {'object_list': object_list})
 
@@ -40,7 +40,7 @@ def article_list(request):
 
 def article_detail(request, pk1, pk):
     try:
-        articles = MPTTArticle.objects.all(is_superuser=request.user.is_superuser).filter(course__id=pk1)
+        articles = MPTTArticle.objects.active(is_superuser=request.user.is_superuser).filter(course__id=pk1)
         # if not request.user.is_superuser:
         #     articles = articles.filter(active=True)
     except:
@@ -80,9 +80,9 @@ def article_search_list(request):
     q = request.GET.get('q', None)
     # print q
     if q:
-        nodes= MPTTArticle.objects.all(is_superuser=request.user.is_superuser).filter(Q(title__icontains=q) | Q(content__icontains=q))
+        nodes= MPTTArticle.objects.active(is_superuser=request.user.is_superuser).filter(Q(title__icontains=q) | Q(content__icontains=q))
     else:
-        nodes = MPTTArticle.objects.all(is_superuser=request.user.is_superuser)
+        nodes = MPTTArticle.objects.active(is_superuser=request.user.is_superuser)
 
     return render(request, 'article_search_list.html', 
         {'nodes': nodes, 'q':q})
