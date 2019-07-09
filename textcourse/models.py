@@ -155,25 +155,33 @@ class MPTTArticle(MPTTModel, Article):
     def  __str__(self):
         return "{} - {}".format(self.get_index(), self.title)
 
-    def get_next_by_order(self):
+    def get_next_by_order(self, *args, **kwargs):
         field = self.__class__._meta.get_field('order')        
         try:
-            return self._get_next_or_previous_by_FIELD(field, is_next=True, parent=None, course=self.course)
+            is_superuser = kwargs.get('is_superuser', None)
+            if is_superuser:
+                return self._get_next_or_previous_by_FIELD(field, is_next=True, parent=None, course=self.course)
+            else:
+                return self._get_next_or_previous_by_FIELD(field, is_next=True, parent=None, course=self.course, active=True)
         except MPTTArticle.DoesNotExist:
             return None
 
-    def get_previous_by_order(self):
+    def get_previous_by_order(self, *args, **kwargs):
         field = self.__class__._meta.get_field('order')
         try:
-            return self._get_next_or_previous_by_FIELD(field, is_next=False, parent=None, course=self.course)
+            is_superuser = kwargs.get('is_superuser', None)
+            if is_superuser:
+                return self._get_next_or_previous_by_FIELD(field, is_next=False, parent=None, course=self.course)
+            else:
+                return self._get_next_or_previous_by_FIELD(field, is_next=False, parent=None, course=self.course, active=True)
         except MPTTArticle.DoesNotExist:
             return None
 
     @property
-    def previous(self):  # need to filter the not active items
+    def previous(self, *args, **kwargs):  # need to filter the not active items
         try:
             if self.is_root_node():
-                node = self.get_previous_by_order()
+                node = self.get_previous_by_order(*args, **kwargs)
                 if node:
                     if node.get_children():
                         return node.get_children().last()
@@ -195,19 +203,19 @@ class MPTTArticle(MPTTModel, Article):
         return None
 
     @property
-    def next(self):
+    def next(self, *args, **kwargs):
         try:
             if self.is_root_node():
                 if self.get_children():
                     return self.get_children().first()
                 else:
-                    return self.get_next_by_order()      
+                    return self.get_next_by_order(*args, **kwargs)      
             else:
                 if self.get_children():
                     return self.get_children().first()
                 elif not self.get_next_sibling():
                     if self.parent.is_root_node():
-                        return self.parent.get_next_by_order()
+                        return self.parent.get_next_by_order(*args, **kwargs)
                     else:
                         return self.parent.get_next_sibling()
                 else:
