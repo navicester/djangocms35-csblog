@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os  # isort:skip
 gettext = lambda s: s
 DATA_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -75,8 +76,6 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 
-
-SITE_ID = 1
 
 
 TEMPLATES = [
@@ -184,7 +183,17 @@ INSTALLED_APPS = (
 
     'pagination',
 
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.weibo',
+    'allauth.socialaccount.providers.github', 
+    'allauth.socialaccount.providers.weixin', 
+
 )
+
+SITE_ID = 1
 
 MIDDLEWARE = (
     'tracking.middleware.BannedIPMiddleware',
@@ -382,3 +391,44 @@ ALDRYN_NEWSBLOG_SEARCH = True
 
 #Crispy FORM TAGs SETTINGS
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# allauth BACKENDS
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+ 
+# LOGIN_REDIRECT_URL = "/accounts/profile/"
+LOGIN_REDIRECT_URL = "/"
+
+ACCOUNT_EMAIL_VERIFICATION = None
+ACCOUNT_EMAIL_REQUIRED = False
+
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory' 
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+# ACCOUNT_EMAIL_REQUIRED = True
+# ACCOUNT_LOGOUT_ON_GET = False
+
+# EMAIL_HOST = "smtp.sina.com"
+# EMAIL_PORT = 25
+# EMAIL_HOST_USER = "opcoder@sina.com"
+# EMAIL_HOST_PASSWORD = "password"
+# EMAIL_USE_TLS = True
+# EMAIL_FROM = "opcoder@sina.com"
+# DEFAULT_FROM_EMAIL = "OPCoder 博客 <opcoder@sina.com>"
+
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'SCOPE': [
+            'user',
+            'repo',
+            'read:org',
+        ],
+    },
+    'weixin': {
+        'AUTHORIZE_URL': 'https://open.weixin.qq.com/connect/oauth2/authorize',  # for media platform        
+        # 'SCOPE': ['snsapi_base'],
+        # 'AUTHORIZE_URL': 'https://open.weixin.qq.com/connect/qrconnect',
+        'SCOPE': ['snsapi_base'],
+    },    
+}
