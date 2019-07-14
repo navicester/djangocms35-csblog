@@ -401,21 +401,19 @@ AUTHENTICATION_BACKENDS = (
 # LOGIN_REDIRECT_URL = "/accounts/profile/"
 LOGIN_REDIRECT_URL = "/"
 
-ACCOUNT_EMAIL_VERIFICATION = None
-ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = None # 'mandatory', None
+ACCOUNT_EMAIL_REQUIRED = False # True. False
 
-# ACCOUNT_EMAIL_VERIFICATION = 'mandatory' 
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
-# ACCOUNT_EMAIL_REQUIRED = True
 # ACCOUNT_LOGOUT_ON_GET = False
 
 # EMAIL_HOST = "smtp.sina.com"
 # EMAIL_PORT = 25
-# EMAIL_HOST_USER = "opcoder@sina.com"
+# EMAIL_HOST_USER = "hebinn2004@sina.com"
 # EMAIL_HOST_PASSWORD = "password"
 # EMAIL_USE_TLS = True
-# EMAIL_FROM = "opcoder@sina.com"
-# DEFAULT_FROM_EMAIL = "OPCoder 博客 <opcoder@sina.com>"
+# EMAIL_FROM = "hebinn2004@sina.com"
+# DEFAULT_FROM_EMAIL = "Django 学堂 <hebinn2004@sina.com>"
 
 SOCIALACCOUNT_PROVIDERS = {
     'github': {
@@ -428,9 +426,11 @@ SOCIALACCOUNT_PROVIDERS = {
     'weixin': {
         # 'AUTHORIZE_URL': 'https://open.weixin.qq.com/connect/oauth2/authorize',  # for media platform    
         # 'SCOPE': ['snsapi_base'],
-
-        # 'AUTHORIZE_URL': 'https://open.weixin.qq.com/connect/qrconnect',
+        
         'AUTHORIZE_URL': 'https://open.weixin.qq.com/connect/oauth2/authorize',        
         'SCOPE': ['snsapi_userinfo'],
+
+        # 'AUTHORIZE_URL': 'https://open.weixin.qq.com/connect/qrconnect',
+        # 'SCOPE': ['snsapi_login'],
     },    
 }
