@@ -18,8 +18,8 @@ urlpatterns = [
         {'sitemaps': {'cmspages': CMSSitemap}}),
 ]
 
-# urlpatterns += i18n_patterns(
-urlpatterns = [    
+urlpatterns += i18n_patterns(
+# urlpatterns = [    
     url(r'^tracking/', include('tracking.urls')), 
     url(r'^tracking2/', include('tracking2.urls')), 
     url(r'^hitcount/', include('hitcount.urls', namespace='hitcount')),
@@ -28,8 +28,8 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),  # NOQA
     url(r'^', include('cms.urls')),
     url(r'^djangocms_comments/', include('djangocms_comments.urls')),
-    ]
-# )
+    # ]
+)
 
 # This is only needed when using runserver.
 if settings.DEBUG:
