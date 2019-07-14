@@ -1,5 +1,6 @@
 {% load cms_tags menu_tags sekizai_tags staticfiles %}
 {% load tracking_tags %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="{{LANGUAGE_CODE}}">
@@ -111,6 +112,24 @@
             </li>
             {% endcomment %}
           </ul>
+          <ul class="nav navbar-nav navbar-right">            
+            {% if request.user.is_authenticated %}
+              {% if request.user.is_wechatuser %}
+              <li class="child sibling"><a href='{{request.user.get_absolute_url}}'}>{{request.user.get_wechatprofile}}</a></li> 
+              <li class="child sibling"><a href="/accounts/logout">{% trans 'Logout' %}</a></li>              
+              {% else %}
+              <li class="child sibling"><a href="{#request.user.get_absolute_url#}">{{request.user}}</a></li> 
+              <li class="child sibling"><a href="/accounts/logout">{% trans 'Logout' %}</a></li>
+              {% endif %}  
+            {% else %}
+              {% if not request.user.is_authenticated and not "/accounts/login" in request.get_full_path %}
+                <li class="child sibling">
+                  <a href="/accounts/login">{% trans 'Login' %} <span class="caret"></span></a>
+                </li>                 
+              {% endif %}            
+            {% endif %}
+            {# language_select LANGUAGE_CODE request #}
+          </ul>          
         </div>
       </div>
     </nav>
