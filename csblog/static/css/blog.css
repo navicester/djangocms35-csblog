@@ -96,10 +96,7 @@ body .container .post-preview .post-subtitle{
     font-size: 20px;
 }
 
-/*liujiangblog*/
-body .container-fluid .content-nav-bar{
-    font-size: 18px;
-}
+
 
 /*liujiangblog*/
 body .container-fluid .article-content,
@@ -108,9 +105,17 @@ body .container .content{
     font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
+body .container-fluid .content-nav-bar{
+    font-size: 18px;
+}
+
 body .container-fluid .content-nav-bar ul.mptt-ul a{
     font-size: 16px!important; 
     font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;    
+}
+
+body .container form{
+    font-size: 16px!important; 
 }
 
 /*p*/
