@@ -79,6 +79,9 @@ class Article(models.Model):
 
     def get_markdown(self):
         content = self.content
+        import re
+        re_str = "(?<![\[\(\/\w])((http(s)?:\/{2})?((www|\w+)\.)?[a-zA-Z0-9]+\.[a-zA-Z0-9]+(.cn)?)(?![\]\)\w])"
+        content = re.sub(re_str, lambda elem: "[{0}]({0})".format(elem.group(0)), content)
         markdown_content = markdown(content,'recipe')
         return mark_safe(markdown_content)
 
