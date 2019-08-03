@@ -84,7 +84,7 @@ class Article(models.Model):
         re_str = "(?<![\[\(\/\w])(http(s)?:\/{2})?(\d+\.\d+\.\d+\.\d+(\:\d+)?)(?![\]\)\w\/\.])"
         # http://sina.com/news/
         content = re.sub(re_str, lambda elem: "[{0}]({0})".format(elem.group(0)), content)
-        re_str = "(?<![\[\(\/\w])((http(s)?:\/{2})((www|\w+)\.)?[\w\/\.\%\:\-]+)(?![\]\)\w\/\.])"
+        re_str = "(?<![\[\(\/\w])((http(s)?:\/{2})((www|\w+)\.)?[\w\/\.\%\:\-\+]+)(?![\]\)\w\/\.])"
         content = re.sub(re_str, lambda elem: "[{0}]({0})".format(elem.group(0)), content)
         # re_str = "(?<![\[\(\/\w])((http(s)?:\/{2})?((www|\w+)\.)?[a-zA-Z0-9]+\.[a-zA-Z0-9]+(.cn)?)(?![\]\)\w\/])"
         # content = re.sub(re_str, lambda elem: "[{0}]({0})".format(elem.group(0)), content)
