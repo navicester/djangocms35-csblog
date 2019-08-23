@@ -49,6 +49,8 @@ body .container-fluid ul{
 
 body .container-fluid .sidebar-article ul.mptt-ul{
     padding-inline-start: 0rem!important;
+    padding-bottom: 0px;
+    padding-top: 0px;
 }
 
 body .container  ul ul,
