@@ -47,9 +47,17 @@ body .container-fluid ul{
     padding-inline-start: 1rem;
 }
 
+body .container-fluid .sidebar-article ul.mptt-ul{
+    padding-inline-start: 0rem!important;
+}
+
 body .container  ul ul,
 body .container-fluid  ul ul{
     padding-inline-start: 2rem;
+}
+
+body .container-fluid  ul.mptt-ul ul.mptt-ul{
+    padding-inline-start: 1rem;
 }
 
 body .container-fluid .article-content ol,
@@ -106,11 +114,11 @@ body .container .content{
 }
 
 body .container-fluid .content-nav-bar{
-    font-size: 18px;
+    font-size: 14px;
 }
 
 body .container-fluid .content-nav-bar ul.mptt-ul a{
-    font-size: 16px!important; 
+    font-size: 14px!important; 
     font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;    
 }
 
