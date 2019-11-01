@@ -47,7 +47,7 @@ Markdown==2.6.11
 markdown2==2.3.5
 phonenumbers==8.9.2
 phonenumberslite==8.9.2
-Pillow==5.0.0
+Pillow==6.2.0
 python-dateutil==2.7.2
 python-slugify==1.2.0
 pytz==2018.3
