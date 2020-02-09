@@ -48,6 +48,10 @@ p.author-info{
     font-weight: 300;
     margin: 0 0 10px;
 }
+
+.highlight{
+    color: yellow;
+}
 </style>
 
 <article class="article
@@ -123,8 +127,10 @@ p.author-info{
         {% if not detail_view  %}
         <p class="post-meta">Posted by {% include "aldryn_newsblog/includes/author.html" with author=article.author %} on {{ article.publishing_date|date:"F d, Y" }} 
             <i class="fa fa-eye" style="font-size: smaller;"> {% get_hit_count for article %} 浏览</i> 
+            <span class="highlight">
             {% if article.is_featured %} featured {% endif %} 
-            {% if not article.published %} unpublished {% endif %}">
+            {% if not article.published %} unpublished {% endif %}
+            </span>
         </p>  
         {% endif %}
     </div>
