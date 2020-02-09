@@ -73,7 +73,7 @@ p.author-info{
         {% if detail_view  %}
         <p class="author-info">{% include "aldryn_newsblog/includes/author.html" with author=article.author %}</p>           
         <i class="fa fa-eye" style="font-size: smaller;"> {% get_hit_count for object %} 浏览</i>  
-        <i class="fa fa-clock-o" style="font-size: smaller;"> {{ article.publishing_date|date }}</i>   
+        <i class="fa fa-clock-o" style="font-size: smaller;"> {{ article.publishing_date|date }}</i>  
 
         {% endif %}
 
@@ -121,7 +121,11 @@ p.author-info{
         {% endif %}
 
         {% if not detail_view  %}
-        <p class="post-meta">Posted by {% include "aldryn_newsblog/includes/author.html" with author=article.author %} on {{ article.publishing_date|date:"F d, Y" }} <i class="fa fa-eye" style="font-size: smaller;"> {% get_hit_count for article %} 浏览</i> </p>  
+        <p class="post-meta">Posted by {% include "aldryn_newsblog/includes/author.html" with author=article.author %} on {{ article.publishing_date|date:"F d, Y" }} 
+            <i class="fa fa-eye" style="font-size: smaller;"> {% get_hit_count for article %} 浏览</i> 
+            {% if article.is_featured %} featured {% endif %} 
+            {% if not article.published %} unpublished {% endif %}">
+        </p>  
         {% endif %}
     </div>
 
