@@ -15,9 +15,9 @@
 {% recursetree nodes %}
 <ul class="mptt-ul">
     {% if node.is_leaf_node %}
-        <a class="{% if node.id == object.id %}active{% endif %} list-group-item" href="{{node.get_absolute_url}}">{{ node.title }}{% if not node.active %} <span class="highlight"> <small>Draft</small></span>{% endif %}</a>
+        <a class="{% if node.id == object.id %}active{% endif %} list-group-item" href="{{node.get_absolute_url}}">{{ node.title }}{% if not node.active %} <span class="highlight"> <small>[Draft]</small></span>{% endif %}</a>
     {% else %}
-        <b><a class="{% if node.id == object.id %}active{% endif %} list-group-item" href="{{node.get_absolute_url}}">{{ node.title }}{% if not node.active %} <span class="highlight"> <small>Draft</small></span>{% endif %}</a></b>
+        <b><a class="{% if node.id == object.id %}active{% endif %} list-group-item" href="{{node.get_absolute_url}}">{{ node.title }}{% if not node.active %} <span class="highlight"> <small>[Draft]</small></span>{% endif %}</a></b>
         <li class="child">
             {{ children }}
         </li>

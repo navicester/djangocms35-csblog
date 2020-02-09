@@ -50,7 +50,11 @@ p.author-info{
 }
 
 .highlight{
-    color: #0085a1;
+    color: green;
+}
+
+.highlight_red{
+    color: red;
 }
 </style>
 
@@ -78,11 +82,13 @@ p.author-info{
         <p class="author-info">{% include "aldryn_newsblog/includes/author.html" with author=article.author %}</p>           
         <i class="fa fa-eye" style="font-size: smaller;"> {% get_hit_count for object %} 浏览</i>  
         <i class="fa fa-clock-o" style="font-size: smaller;"> {{ article.publishing_date|date }}</i>  
-        <span class="highlight">
-        {% if article.is_featured %} featured {% endif %} 
-        {% if not article.published %} unpublished {% endif %}
+        <span class="highlight small" style="font-size: smaller;">
+        {% if article.is_featured %} <i class="fa fa-star" aria-hidden="true">featured</i> {% endif %} 
         </span>
-        
+        <span class="highlight_red small" style="font-size: smaller;">
+        {% if not article.published %} <i class="fa fa-spinner" aria-hidden="true"> unpublished</i> {% endif %}
+        </span>
+
         {% endif %}
 
         {% if detail_view and article.categories.exists %}
@@ -131,9 +137,11 @@ p.author-info{
         {% if not detail_view  %}
         <p class="post-meta">Posted by {% include "aldryn_newsblog/includes/author.html" with author=article.author %} on {{ article.publishing_date|date:"F d, Y" }} 
             <i class="fa fa-eye" style="font-size: smaller;"> {% get_hit_count for article %} 浏览</i> 
-            <span class="highlight">
-            {% if article.is_featured %} featured {% endif %} 
-            {% if not article.published %} unpublished {% endif %}
+            <span class="highlight small">
+            {% if article.is_featured %} <i class="fa fa-star" aria-hidden="true"> featured</i> {% endif %} 
+            </span>
+            <span class="highlight_red small">
+            {% if not article.published %} <i class="fa fa-spinner" aria-hidden="true"> unpublished</i> {% endif %}
             </span>
         </p>  
         {% endif %}

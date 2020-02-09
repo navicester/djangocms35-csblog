@@ -32,7 +32,7 @@
         {# for item in object.mpttarticle_set.root #}
         {% for item in article_root %}        
         <a class="list-group-item justify-content-between {% if forloop.first %}first-lecture{% endif  %}  " href="{{item.get_absolute_url}}"> 
-            <h3 class="mb-1">{{item.index}} {{item.title}}</h3>
+            <h3 class="mb-1">{{item.index}} {{item.title}} {% if not item.active%} <i class="fa fa-spinner" style="color:red;" aria-hidden="true"></i>{% endif %}</h3>
         </a>
         {% endfor %}                    
     </div>
