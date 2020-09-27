@@ -402,7 +402,7 @@ AUTHENTICATION_BACKENDS = (
 LOGIN_REDIRECT_URL = "/"
 
 ACCOUNT_EMAIL_REQUIRED = True # True. False
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # 'mandatory', 'optional', None
+ACCOUNT_EMAIL_VERIFICATION = 'optional' # 'mandatory', 'optional', None
 
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 # ACCOUNT_LOGOUT_ON_GET = False
