@@ -401,19 +401,25 @@ AUTHENTICATION_BACKENDS = (
 # LOGIN_REDIRECT_URL = "/accounts/profile/"
 LOGIN_REDIRECT_URL = "/"
 
-ACCOUNT_EMAIL_VERIFICATION = None # 'mandatory', None
-ACCOUNT_EMAIL_REQUIRED = False # True. False
+ACCOUNT_EMAIL_REQUIRED = True # True. False
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # 'mandatory', 'optional', None
 
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 # ACCOUNT_LOGOUT_ON_GET = False
 
-# EMAIL_HOST = "smtp.sina.com"
-# EMAIL_PORT = 25
-# EMAIL_HOST_USER = "hebinn2004@sina.com"
-# EMAIL_HOST_PASSWORD = "password"
-# EMAIL_USE_TLS = True
-# EMAIL_FROM = "hebinn2004@sina.com"
-# DEFAULT_FROM_EMAIL = "Django 学堂 <hebinn2004@sina.com>"
+EMAIL_HOST = "smtp.sina.com"
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "hebinn2004@sina.com"
+try:
+    from setting_security import EMAIL_HOST_PASSWORD
+except:
+    EMAIL_HOST_PASSWORD = "password"
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+# EMAIL_USE_SSL 和 EMAIL_USE_TLS 是互斥的，即只能有一个为 True。
+EMAIL_FROM = "hebinn2004@sina.com"
+DEFAULT_FROM_EMAIL = "Django 学堂 <hebinn2004@sina.com>"
+
 
 SOCIALACCOUNT_PROVIDERS = {
     'github': {

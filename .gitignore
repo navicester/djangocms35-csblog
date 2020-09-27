@@ -14,7 +14,7 @@ site-packages-pyd/
 
 # Security iles
 security_setting.py
-#settings_security.py
+setting_security.py
 
 #static/static_root
 #static_in_env/media_root
